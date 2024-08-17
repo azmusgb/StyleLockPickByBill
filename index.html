@@ -13,83 +13,161 @@
     <header class="text-center mb-8 p-6 bg-yellow-300 rounded-lg shadow-lg">
         <h1 class="text-4xl font-bold text-brown-900 mb-4">Personal Color Analysis Report</h1>
         <p class="text-lg text-brown-700"><strong>Client Name:</strong> Jess Tanner</p>
-        <p class="text-lg text-brown-700"><strong>Seasonal Classification:</strong> 
-            <span class="tooltip relative group cursor-pointer">Light Spring
-                <span class="tooltiptext hidden absolute text-center w-32 p-2 bg-gray-900 text-white rounded-md bottom-full left-1/2 transform -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Hover to learn more...</span>
-            </span>
-        </p>
         <p class="text-lg text-brown-700"><strong>Date:</strong> August 17, 2024</p>
         <p class="text-lg text-brown-700"><strong>Consultant:</strong> Bill</p>
     </header>
 
     <div class="max-w-3xl mx-auto">
-        <div class="flex justify-center mb-8">
-            <div class="lock-container relative w-24 h-36">
-                <div class="lock-body bg-gray-800 rounded-lg absolute bottom-0 w-full h-3/4"></div>
-                <div class="lock-shackle border-8 border-gray-800 border-b-0 rounded-t-full absolute top-0 left-1/2 transform -translate-x-1/2 w-3/5 h-1/2"></div>
-                <div class="lock-pick bg-gray-400 absolute w-4/5 h-2 top-1/2 left-1/2 transform -translate-x-1/2 animate-bounce"></div>
-            </div>
-        </div>
-
-        <section id="season-overview" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6 opacity-0 transform transition duration-700 ease-out translate-x-[-100px]">
-            <h2 class="section-title text-2xl font-semibold text-brown-700 mb-4">Season Overview</h2>
-            <p>After analyzing your skin tone, hair color, and eye color, we have determined that you belong to the Light Spring category...</p>
+        <!-- Client Overview -->
+        <section id="client-overview" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Client Overview</h2>
+            <p><strong>Client Name:</strong> Jess Tanner</p>
+            <p><strong>Seasonal Classification:</strong> Light Spring</p>
         </section>
 
-        <section class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6 opacity-0 transform transition duration-700 ease-out translate-x-[-100px]">
-            <h2 class="section-title text-2xl font-semibold text-brown-700 mb-4"><i class="fas fa-palette"></i> Detailed Color Characteristics</h2>
+        <!-- Season Overview -->
+        <section id="season-overview" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Season Overview</h2>
+            <p>After analyzing your skin tone, hair color, and eye color, we have determined that you belong to the Light Spring category. This season’s palette is designed to complement your natural warmth and radiance. Light Spring is characterized by soft, warm, and light colors that harmonize with the freshness and brightness of early spring.</p>
+        </section>
+
+        <!-- Detailed Color Characteristics -->
+        <section id="detailed-color-characteristics" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Detailed Color Characteristics</h2>
 
             <h3 class="text-lg font-semibold text-brown-600">Skin Tone</h3>
             <ul class="ml-6 list-disc mb-4">
-                <li><strong>Undertone:</strong> Warm undertone with a golden or peachy base.</li>
-                <li><strong>Surface Tone:</strong> Light and delicate, translucent and porcelain-like.</li>
-                <li><strong>Blushing:</strong> Soft, warm pink or peach.</li>
+                <li><strong>Undertone:</strong> Your skin has a warm undertone with a golden or peachy base, giving you a natural and healthy glow.</li>
+                <li><strong>Surface Tone:</strong> Light and delicate, your skin tone is translucent and porcelain-like.</li>
+                <li><strong>Blushing:</strong> You blush in a soft, warm pink or peach, which complements your warm undertone.</li>
             </ul>
 
             <h3 class="text-lg font-semibold text-brown-600">Hair Color</h3>
             <ul class="ml-6 list-disc mb-4">
-                <li><strong>Natural Shade:</strong> Light blonde with golden undertones.</li>
-                <li><strong>Best Enhancements:</strong> Honey blonde, golden blonde, or strawberry blonde.</li>
+                <li><strong>Natural Shade:</strong> Your light blonde hair with golden undertones is ideal for the Light Spring season.</li>
+                <li><strong>Best Enhancements:</strong> Consider honey blonde, golden blonde, or strawberry blonde to add more warmth to your natural hair color.</li>
             </ul>
 
             <h3 class="text-lg font-semibold text-brown-600">Eye Color</h3>
-            <p>Your eyes likely have a light, warm hue, such as soft green, warm hazel, or light blue with golden flecks.</p>
+            <p>Your eyes likely have a light, warm hue, such as soft green, warm hazel, or light blue with golden flecks. To enhance your natural beauty, consider incorporating soft greens, warm golds, and light peaches into your wardrobe and makeup routine. These colors will harmonize beautifully with your light, warm eye color.</p>
+
+            <p>Since your skin, hair, and eyes have a low to medium contrast level, soft, blended colors will complement your natural features effectively.</p>
         </section>
 
-        <section class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6 opacity-0 transform transition duration-700 ease-out translate-x-[-100px]">
-            <h2 class="section-title text-2xl font-semibold text-brown-700 mb-4">Color Recommendations</h2>
+        <!-- Color Recommendations -->
+        <section id="color-recommendations" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Color Recommendations</h2>
+
             <h3 class="text-lg font-semibold text-brown-600">Clothing Palette</h3>
             <ul class="ml-6 list-disc mb-4">
-                <li><strong>Neutrals:</strong> 
-                    <span class="color-swatch inline-block w-5 h-5 bg-beige-200 rounded-full border border-gray-700 mr-2"></span>
-                    Warm ivory, 
-                    <span class="color-swatch inline-block w-5 h-5 bg-beige-300 rounded-full border border-gray-700 mr-2"></span>
-                    light camel, 
-                    <span class="color-swatch inline-block w-5 h-5 bg-beige-200 rounded-full border border-gray-700 mr-2"></span>
-                    soft beige, 
-                    <span class="color-swatch inline-block w-5 h-5 bg-taupe-200 rounded-full border border-gray-700 mr-2"></span>
-                    light taupe.
-                </li>
-                <li><strong>Primary Colors:</strong> 
-                    <span class="color-swatch inline-block w-5 h-5 bg-pink-100 rounded-full border border-gray-700 mr-2"></span>
-                    Soft pastels like peach, 
-                    <span class="color-swatch inline-block w-5 h-5 bg-peach-100 rounded-full border border-gray-700 mr-2"></span>
-                    apricot, 
-                    <span class="color-swatch inline-block w-5 h-5 bg-coral-100 rounded-full border border-gray-700 mr-2"></span>
-                    coral, 
-                    <span class="color-swatch inline-block w-5 h-5 bg-pink-200 rounded-full border border-gray-700 mr-2"></span>
-                    warm pink, 
-                    <span class="color-swatch inline-block w-5 h-5 bg-mint-100 rounded-full border border-gray-700 mr-2"></span>
-                    light mint, 
-                    <span class="color-swatch inline-block w-5 h-5 bg-aqua-100 rounded-full border border-gray-700 mr-2"></span>
-                    soft aqua.
-                </li>
+                <li><strong>Neutrals:</strong> Warm ivory, light camel, soft beige, and light taupe are versatile neutrals that will complement your wardrobe well.</li>
+                <li><strong>Primary Colors:</strong> Soft pastels like peach, apricot, coral, warm pink, light mint, and soft aqua complement your complexion.</li>
+                <li><strong>Accent Colors:</strong> Light periwinkle, soft lavender, and gentle yellows add depth without overwhelming your appearance.</li>
+                <li><strong>Colors to Avoid:</strong> Dark, cool tones like black, stark white, deep navy, and dark grays may clash with your natural coloring.</li>
+            </ul>
+
+            <h3 class="text-lg font-semibold text-brown-600">Makeup Palette</h3>
+            <ul class="ml-6 list-disc mb-4">
+                <li><strong>Foundation:</strong> Opt for a foundation with a warm, golden, or peach undertone to achieve a radiant finish.</li>
+                <li><strong>Blush:</strong> Soft peach, warm pink, or coral blushes will enhance your natural flush.</li>
+                <li><strong>Eyeshadow:</strong> Warm neutrals like light gold, peach, or soft bronze, along with warm greens or soft lavenders, are ideal.</li>
+                <li><strong>Lipstick:</strong> Coral, peach, soft apricot, or warm pink lipsticks complement your eye color; avoid deep, cool shades.</li>
+            </ul>
+
+            <h3 class="text-lg font-semibold text-brown-600">Hair Color</h3>
+            <ul class="ml-6 list-disc mb-4">
+                <li><strong>Best Tones:</strong> Warm tones, such as honey blonde, golden blonde, light caramel, or strawberry blonde, are ideal for achieving a harmonious complexion.</li>
+                <li>Avoid: Ashy, overly cool tones, or dark, intense shades that deviate from your natural hue.</li>
+            </ul>
+
+            <h3 class="text-lg font-semibold text-brown-600">Accessories Palette</h3>
+            <ul class="ml-6 list-disc mb-4">
+                <li><strong>Jewelry:</strong> Warm metals, including gold, rose gold, and copper, harmonize beautifully with various skin tones.</li>
+                <li><strong>Scarves & Hats:</strong> Opt for soft, warm pastels or light neutrals to enhance the overall aesthetic of your outfits.</li>
             </ul>
         </section>
 
-        <section class="contact-info bg-yellow-200 p-6 rounded-lg shadow-lg mb-6 opacity-0 transform transition duration-700 ease-out translate-x-[-100px]">
-            <h2 class="section-title text-2xl font-semibold text-brown-700 mb-4">Contact Information</h2>
-            <p>If you are interested in retaining my services or have any questions, please contact me:</p>
+        <!-- Wardrobe and Styling Recommendations -->
+        <section id="wardrobe-styling" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Wardrobe and Styling Recommendations</h2>
+            <p>To achieve a cohesive and flattering appearance, consider incorporating diverse textures and patterns into your wardrobe. Opt for clothing items in harmonious complementary colors, such as soft greens and warm golds, to enhance your natural beauty. Additionally, consider incorporating accessories that complement your chosen outfits, such as warm jewelry and soft scarves.</p>
+
+            <p>As a Light Spring, your most flattering colors are warm, light, and fresh. By incorporating these tones into your wardrobe, makeup, and accessories, you will accentuate the warmth and clarity of your complexion. Adhering to the Light Spring color palette will ensure that you consistently radiate and harmonize.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Clothing and Accessories</h3>
+            <p>Complement your best colors with versatile clothing items. Light Spring colors, inherently harmonious, facilitate easy mixing and matching. Begin with essential neutral pieces and incorporate pops of color through accessories.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Prints and Patterns</h3>
+            <p>Select patterns that harmonize with your preferred colors. Opt for soft florals, warm pastels, and light, airy designs. Avoid high-contrast patterns that may overwhelm your delicate features.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Outerwear</h3>
+            <p>Choose outerwear in warm neutrals such as camel, beige, or light taupe. These versatile options layer well over your colorful clothing choices, maintaining a cohesive look.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Event Styling</h3>
+            <p>For formal occasions, opt for softer shades like light coral, peach, or soft gold. Pair with delicate jewelry in gold or rose gold to complete the elegant ensemble.</p>
+        </section>
+
+        <!-- Retainer Services & Contract Terms -->
+        <section id="retainer-services" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Retainer Services & Contract Terms</h2>
+            <p>If you seek ongoing support to refine and maintain your style, I offer both monthly and yearly retainer services. These services provide personalized assistance with seasonal wardrobe updates, makeup consultations, special event styling, and more.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Retainer Service Packages</h3>
+            <p><strong>Monthly Retainer:</strong> $150 per month</p>
+            <ul class="ml-6 list-disc mb-4">
+                <li>Monthly wardrobe consultation (virtual or in-person) to refresh your wardrobe with new pieces and ensure they harmonize with your Light Spring color palette.</li>
+                <li>Personal shopping assistance to help you find and purchase items that complement your color season.</li>
+                <li>Makeup consultations to stay informed about makeup trends and product recommendations that suit your Light Spring coloring.</li>
+                <li>Guidance on selecting outfits and accessories for special occasions.</li>
+            </ul>
+            <p><strong>Terms:</strong> This contract renews monthly. You may cancel at any time with a 30-day written notice.</p>
+
+            <p><strong>Yearly Retainer:</strong> $1,200 per year</p>
+            <ul class="ml-6 list-disc mb-4">
+                <li>All monthly retainer inclusions.</li>
+                <li>Comprehensive wardrobe updates for each season.</li>
+                <li>Personalized makeup palettes tailored to your specific needs.</li>
+                <li>Expertise in analyzing emerging makeup and fashion trends.</li>
+            </ul>
+            <p><strong>Terms:</strong> This contract renews annually. You may cancel at any time with a 30-day written notice.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Seasonal Wardrobe Overhaul</h3>
+            <p>Four comprehensive sessions annually to harmonize your wardrobe with seasonal shifts. This ensures you have an array of appropriate attire for various occasions.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Full Makeup & Hair Consultation</h3>
+            <p>Bi-annual consultations to maintain your makeup and hairstyle in contemporary fashion, complementing your Light Spring palette.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Unlimited Event Styling</h3>
+            <p>Preferential access to styling services for all special events throughout the year.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Personal Shopping Assistance</h3>
+            <p>Ongoing support in selecting and acquiring the most suitable items for your personal style.</p>
+
+            <p><strong>Annual Fee:</strong> $1,500 (a savings of $300)</p>
+            <p><strong>Terms:</strong> This agreement is valid for one year commencing from the date of its signature. Early termination is subject to a cancellation fee of $150.</p>
+        </section>
+
+        <!-- Referral & VIP Program -->
+        <section id="referral-vip" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Referral & VIP Program</h2>
+
+            <h3 class="text-lg font-semibold text-brown-600">Referral Program</h3>
+            <p><strong>Earn Rewards:</strong> For each new client you refer to Style Lock-Picked by Bill, you will earn a $50 credit towards your next service or monthly retainer. Your referred client will also receive a 10% discount on their initial service.</p>
+            <p><strong>Unlimited Referrals:</strong> There is no limit to the number of clients you can refer, allowing you to accumulate credits for substantial savings.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">VIP Membership</h3>
+            <p><strong>Exclusive Benefits:</strong> As a VIP member, you will gain early access to new services, exclusive discounts, and priority booking. VIP members also receive a complimentary additional session annually—either a wardrobe consultation or event styling session, based on your preference.</p>
+            <p><strong>Membership Fee:</strong> $200 annually for non-retainer clients or $100 annually for retainer clients.</p>
+
+            <h3 class="text-lg font-semibold text-brown-600">Friends & Family Pricing Plan</h3>
+            <p><strong>Discounted Rates:</strong> Enjoy a 15% discount on all services when you enroll in the Friends & Family Pricing Plan. This discount is available to you and up to four additional family members or friends.</p>
+            <p><strong>Enrollment Fee:</strong> $250 annually per group.</p>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="contact-info bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Contact Information</h2>
+            <p>If you are interested in retaining my services, joining a program, or have any questions, please do not hesitate to contact me.</p>
             <p><strong>Business Name:</strong> Style Lock-Picked by Bill</p>
             <p><strong>Phone:</strong> 803-630-9847</p>
             <p><strong>Website:</strong> <a href="http://www.StyleLockPickByBill.com" target="_blank" class="text-red-500 font-bold hover:underline">www.StyleLockPickByBill.com</a></p>
