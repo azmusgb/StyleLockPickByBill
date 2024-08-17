@@ -14,6 +14,7 @@
             width: 100px;
             height: 150px;
             margin: 50px auto;
+            cursor: pointer;
         }
         .lock-body {
             width: 100px;
@@ -50,24 +51,6 @@
             50% {
                 transform: rotate(30deg);
             }
-        }
-
-        /* Easter Egg - Tinker Bell */
-        #tinkerbell {
-            display: none;
-            position: absolute;
-            width: 100px;
-            bottom: 20px;
-            right: 20px;
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.5s ease-in-out;
-        }
-
-        #tinkerbell.visible {
-            display: block;
-            opacity: 1;
-            transform: scale(1);
         }
 
         /* General Styling */
@@ -254,9 +237,6 @@
             <p class="text-center">Your personal style is the key to unlocking your confidence. Let’s find the right fit for you.</p>
         </section>
 
-        <!-- Tinker Bell Easter Egg -->
-        <img src="https://www.facebook.com/share/r/yCcNgSaMY3vpPxR1/?mibextid=UalRPS" alt="Tinker Bell" id="tinkerbell">
-
         <!-- Color Recommendations -->
         <section id="color-recommendations" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
             <h2 class="text-2xl font-semibold text-brown-700 mb-4">Color Recommendations</h2>
@@ -379,10 +359,9 @@
     </div>
 
     <script>
-        // Easter Egg - Show Tinker Bell on Click
+        // Play the Facebook video in a new tab when the lock-picking animation is clicked
         document.getElementById('lock-pick-trigger').addEventListener('click', function() {
-            const tinkerbell = document.getElementById('tinkerbell');
-            tinkerbell.classList.toggle('visible');
+            window.open('https://www.facebook.com/share/r/yCcNgSaMY3vpPxR1/?mibextid=UalRPS', '_blank');
         });
 
         // Section Visibility on Scroll (for the smooth reveal)
