@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Secret Squirrel Mission Catalog</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Stardos+Stencil:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Mobile-First Variables */
+        /* Mobile-Optimized Variables */
         :root {
             --olive: #556B2F;
             --olive-dark: #3A4A24;
@@ -16,51 +16,63 @@
             --tan: #D2B48C;
             --tan-light: #E5D9C3;
             --danger: #C00;
-            --transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition: 0.2s ease-out;
         }
         
-        /* Base Mobile Styles */
+        /* Reset for Mobile */
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+            overflow-x: hidden;
         }
         
         body {
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #FAFAFA;
+            background: #FAFAFA;
             color: var(--dark-gray);
             line-height: 1.5;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
             overflow-x: hidden;
+            position: relative;
+            padding-bottom: 60px; /* Space for bottom nav */
         }
         
         /* Header - Mobile Optimized */
         header {
             background: linear-gradient(135deg, var(--olive-dark), var(--olive));
             color: white;
-            padding: 1rem;
+            padding: 12px 15px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
-            justify-content: space-between;
             border-bottom: 2px solid var(--tan);
+            height: 60px;
         }
         
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            max-width: 80%;
+            gap: 10px;
+            width: 100%;
         }
         
         .logo {
-            width: 50px;
-            height: 50px;
-            min-width: 50px;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,50 Q50,20 70,50 Q50,80 30,50 Z" fill="%23D2B48C" stroke="%231A1A1A" stroke-width="2"/><circle cx="40" cy="45" r="3" fill="%231A1A1A"/><circle cx="60" cy="45" r="3" fill="%231A1A1A"/><path d="M45,60 Q50,65 55,60" fill="none" stroke="%231A1A1A" stroke-width="2"/><text x="50" y="90" font-family="Arial" font-size="8" text-anchor="middle" fill="white">AUSTRALIA</text><path d="M50,25 L50,35 M45,30 L55,30" stroke="%231A1A1A" stroke-width="2"/></svg>');
             background-size: contain;
         }
@@ -68,7 +80,7 @@
         .header-text h1 {
             font-family: 'Stardos Stencil', cursive;
             margin: 0;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             line-height: 1.2;
             white-space: nowrap;
             overflow: hidden;
@@ -77,7 +89,7 @@
         
         .header-text p {
             margin: 0;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             opacity: 0.9;
             font-weight: 300;
             white-space: nowrap;
@@ -86,10 +98,6 @@
         }
         
         /* Mobile Navigation - Bottom Fixed */
-        .mobile-nav-toggle {
-            display: none;
-        }
-        
         nav {
             position: fixed;
             bottom: 0;
@@ -97,111 +105,133 @@
             right: 0;
             background: var(--dark-gray);
             display: flex;
-            overflow-x: auto;
-            padding: 0.5rem;
+            justify-content: space-around;
+            padding: 8px 0;
             z-index: 999;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-            -webkit-overflow-scrolling: touch;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(210, 180, 140, 0.2);
+            height: 60px;
         }
         
         nav a {
             color: white;
             text-decoration: none;
-            padding: 0.6rem 0.8rem;
+            padding: 8px;
             font-size: 0.7rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 70px;
-            flex-shrink: 0;
+            justify-content: center;
+            flex: 1;
+            min-width: 0;
+            transition: var(--transition);
         }
         
         nav i {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
+            font-size: 1.2rem;
+            margin-bottom: 3px;
         }
         
         nav a.active {
             color: var(--tan);
+            transform: translateY(-5px);
         }
         
-        /* Hero - Simplified for Mobile */
+        /* Hero - Mobile Optimized */
         .hero {
             background: 
                 linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                 url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
             background-size: cover;
             background-position: center;
-            height: 50vh;
-            min-height: 300px;
+            height: 40vh;
+            min-height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 20px;
         }
         
         .hero-content {
             background-color: rgba(30, 30, 30, 0.8);
             border: 2px solid var(--tan);
             border-radius: 8px;
-            padding: 1.5rem;
+            padding: 20px;
             width: 100%;
-            max-width: 500px;
+            max-width: 400px;
+            text-align: center;
         }
         
         .hero h2 {
             font-family: 'Stardos Stencil', cursive;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
             color: var(--tan);
-            text-align: center;
         }
         
         .hero p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
         }
         
         .cta-button {
             background: var(--olive);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 10px 20px;
             border-radius: 4px;
             font-family: 'Stardos Stencil', cursive;
-            font-size: 1rem;
+            font-size: 0.9rem;
             width: 100%;
-            max-width: 200px;
+            max-width: 180px;
             margin: 0 auto;
             display: block;
+            transition: var(--transition);
+        }
+        
+        .cta-button:active {
+            transform: scale(0.96);
         }
         
         /* Catalog - Mobile Optimized */
-        .catalog {
-            padding: 1.5rem 1rem;
-            margin-bottom: 60px; /* Space for bottom nav */
+        main {
+            flex: 1;
+            padding: 20px 15px;
         }
         
         .section-header {
             font-family: 'Stardos Stencil', cursive;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--olive-dark);
-            margin: 2rem 0 1.5rem;
-            padding-bottom: 0.5rem;
+            margin: 25px 0 15px;
+            padding-bottom: 5px;
             border-bottom: 2px solid var(--tan);
+            position: relative;
+        }
+        
+        .section-header:after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--olive-light);
         }
         
         .category-controls {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
         
         .category-filter, .search-box input {
             width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1rem;
+            padding: 12px 15px;
+            margin-bottom: 12px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            appearance: none;
+            -webkit-appearance: none;
         }
         
         .search-box {
@@ -210,32 +240,38 @@
         
         .search-box i {
             position: absolute;
-            left: 1rem;
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
             color: #777;
+            font-size: 0.9rem;
         }
         
         .search-box input {
-            padding-left: 2.5rem;
+            padding-left: 40px;
         }
         
         .product-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 20px;
         }
         
         .product-card {
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             border: 1px solid #eee;
+            transition: var(--transition);
+        }
+        
+        .product-card:active {
+            transform: scale(0.98);
         }
         
         .product-image {
-            height: 200px;
+            height: 180px;
             background-size: cover;
             background-position: center;
             position: relative;
@@ -251,10 +287,11 @@
         }
         
         .badge {
-            padding: 0.3rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.65rem;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.6rem;
             font-weight: bold;
+            text-align: center;
         }
         
         .badge-australia {
@@ -268,188 +305,182 @@
         }
         
         .product-content {
-            padding: 1.2rem;
+            padding: 15px;
         }
         
         .product-title {
             font-family: 'Stardos Stencil', cursive;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
         
         .product-description {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
             color: #555;
+            line-height: 1.4;
         }
         
         .product-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
         }
         
         .product-price {
             font-weight: bold;
             color: var(--olive);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         
         .product-rating {
             color: var(--tan);
+            font-size: 0.8rem;
         }
         
         .order-btn {
             background: var(--olive);
             color: white;
             border: none;
-            padding: 0.8rem;
-            border-radius: 4px;
+            padding: 10px;
+            border-radius: 5px;
             width: 100%;
             font-family: 'Stardos Stencil', cursive;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
         
-        /* Footer - Mobile Simplified */
+        .order-btn:active {
+            background: var(--olive-light);
+            transform: scale(0.98);
+        }
+        
+        /* Footer - Mobile Optimized */
         footer {
             background: var(--dark-gray);
             color: white;
-            padding: 2rem 1rem;
-            font-size: 0.9rem;
+            padding: 25px 15px;
+            font-size: 0.85rem;
         }
         
         .footer-column {
-            margin-bottom: 2rem;
+            margin-bottom: 25px;
         }
         
         .footer-column h3 {
             font-family: 'Stardos Stencil', cursive;
             color: var(--tan);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-size: 1rem;
         }
         
         .footer-column ul {
             list-style: none;
-            padding: 0;
         }
         
         .footer-column li {
-            margin-bottom: 0.6rem;
+            margin-bottom: 8px;
         }
         
         .footer-column a {
             color: white;
             text-decoration: none;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:active {
+            color: var(--tan);
         }
         
         .security-notice {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--tan-light);
-            margin-top: 2rem;
-            padding-top: 1rem;
+            margin-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid rgba(210, 180, 140, 0.3);
+            line-height: 1.5;
         }
         
         .copyright {
             text-align: center;
-            margin-top: 2rem;
-            font-size: 0.8rem;
+            margin-top: 20px;
+            font-size: 0.75rem;
             opacity: 0.7;
         }
         
         /* Tablet Styles */
         @media (min-width: 600px) {
             .header-text h1 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             
             .header-text p {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             
             nav a {
-                font-size: 0.8rem;
-                min-width: 80px;
+                font-size: 0.75rem;
+            }
+            
+            nav i {
+                font-size: 1.3rem;
             }
             
             .hero h2 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .footer-content {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
         }
         
         /* Desktop Styles */
         @media (min-width: 992px) {
-            header {
-                padding: 1rem 2rem;
+            body {
+                padding-bottom: 0;
             }
             
             nav {
                 position: sticky;
-                top: 84px;
+                top: 60px;
                 bottom: auto;
+                height: auto;
                 padding: 0;
                 justify-content: center;
             }
             
             nav a {
                 flex-direction: row;
-                gap: 0.5rem;
-                padding: 1rem 1.5rem;
+                gap: 8px;
+                padding: 15px 20px;
                 font-size: 0.9rem;
-                min-width: auto;
-            }
-            
-            nav i {
-                margin-bottom: 0;
-            }
-            
-            .catalog {
-                margin-bottom: 0;
-                padding: 2rem;
+                min-width: 100px;
             }
             
             .product-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            
-            .footer-content {
-                grid-template-columns: repeat(4, 1fr);
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-        }
-        
-        /* Large Desktop */
-        @media (min-width: 1200px) {
-            .product-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 2rem;
-            }
         }
         
         /* Interaction Enhancements */
-        button, a {
-            transition: var(--transition);
-        }
-        
-        button:active {
-            transform: scale(0.98);
-        }
-        
-        /* Performance Optimizations */
-        .product-image {
-            will-change: transform;
+        @media (hover: hover) {
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+            }
+            
+            .order-btn:hover {
+                background: var(--olive-light);
+            }
+            
+            .footer-column a:hover {
+                color: var(--tan);
+                transform: translateX(3px);
+            }
         }
     </style>
 </head>
@@ -477,7 +508,7 @@
     </section>
     
     <!-- Main Content -->
-    <main class="catalog">
+    <main>
         <div class="section-header" id="apparel">TACTICAL APPAREL</div>
         
         <div class="category-controls">
@@ -491,7 +522,7 @@
             
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search gear...">
+                <input type="text" placeholder="Search gear..." id="searchInput">
             </div>
         </div>
         
@@ -501,10 +532,11 @@
                 <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1591030434469-3d78c7b17820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="product-badges">
                     <div class="badge badge-australia">AUS</div>
+                    <div class="badge badge-new">NEW</div>
                 </div>
                 <div class="product-content">
-                    <h3 class="product-title">TACTICAL SHIRT</h3>
-                    <p class="product-description">Combat-ready shirt with moisture-wicking fabric and reinforced elbows</p>
+                    <h3 class="product-title">TACTICAL OPERATOR SHIRT</h3>
+                    <p class="product-description">Combat-ready shirt with moisture-wicking fabric and reinforced elbows. Mission emblem on sleeve.</p>
                     <div class="product-meta">
                         <span class="product-price">$129.99</span>
                         <span class="product-rating">
@@ -525,8 +557,8 @@
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')"></div>
                 <div class="product-content">
-                    <h3 class="product-title">MODULAR VEST</h3>
-                    <p class="product-description">Plate carrier with MOLLE webbing for mission customization</p>
+                    <h3 class="product-title">MODULAR TACTICAL VEST</h3>
+                    <p class="product-description">Plate carrier with MOLLE webbing system for mission customization. Hydration compatible.</p>
                     <div class="product-meta">
                         <span class="product-price">$279.99</span>
                         <span class="product-rating">
@@ -543,12 +575,55 @@
                 </div>
             </div>
             
-            <!-- More products... -->
+            <!-- Combat Pants -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">AUS</div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">SPEC OPS COMBAT PANTS</h3>
+                    <p class="product-description">Durable tactical trousers with knee pad inserts and multiple cargo pockets.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$119.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Kit
+                    </button>
+                </div>
+            </div>
         </div>
         
         <div class="section-header" id="vehicles">VEHICLE SYSTEMS</div>
         <div class="product-grid">
-            <!-- Vehicle products... -->
+            <!-- Humvee Wrap -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1617196034183-421b4917c92d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80')"></div>
+                <div class="product-content">
+                    <h3 class="product-title">HMMWV CAMO WRAP</h3>
+                    <p class="product-description">Complete tactical wrap for Humvee featuring mission insignia and digital camouflage pattern.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$3,299.00</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Kit
+                    </button>
+                </div>
+            </div>
         </div>
     </main>
     
@@ -557,23 +632,23 @@
         <div class="footer-column">
             <h3>MISSION SUPPORT</h3>
             <ul>
-                <li><a href="#">Contact HQ</a></li>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Returns</a></li>
+                <li><a href="#"><i class="fas fa-phone-alt"></i> Contact HQ</a></li>
+                <li><a href="#"><i class="fas fa-truck"></i> Shipping</a></li>
+                <li><a href="#"><i class="fas fa-exchange-alt"></i> Returns</a></li>
             </ul>
         </div>
         
         <div class="footer-column">
             <h3>ABOUT</h3>
             <ul>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Terms</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Our Story</a></li>
+                <li><a href="#"><i class="fas fa-lock"></i> Privacy</a></li>
+                <li><a href="#"><i class="fas fa-file-contract"></i> Terms</a></li>
             </ul>
         </div>
         
         <div class="security-notice">
-            <p><i class="fas fa-shield-alt"></i> All equipment complies with Australian defense standards</p>
+            <p><i class="fas fa-shield-alt"></i> All equipment complies with Australian defense standards and export regulations.</p>
         </div>
         
         <div class="copyright">
@@ -584,40 +659,90 @@
     <!-- Mobile Navigation -->
     <nav>
         <a href="#apparel" class="active"><i class="fas fa-tshirt"></i> Apparel</a>
-        <a href="#vehicles"><i class="fas fa-truck"></i> Vehicles</a>
-        <a href="#equipment"><i class="fas fa-tools"></i> Gear</a>
+        <a href="#vehicles"><i class="fas fa-truck-monster"></i> Vehicles</a>
+        <a href="#equipment"><i class="fas fa-tools"></i> Equipment</a>
         <a href="#munitions"><i class="fas fa-shield-alt"></i> Munitions</a>
         <a href="#cart"><i class="fas fa-shopping-cart"></i> Cart</a>
     </nav>
-    
+
     <script>
-        // Mobile-Friendly Interactions
+        // Enhanced Mobile Interactions
         document.addEventListener('DOMContentLoaded', function() {
-            // Touch feedback for buttons
-            const buttons = document.querySelectorAll('button, .product-card');
-            buttons.forEach(button => {
-                button.addEventListener('touchstart', function() {
+            // Better touch feedback
+            const interactiveElements = document.querySelectorAll('button, a, .product-card');
+            
+            interactiveElements.forEach(el => {
+                // Touch start
+                el.addEventListener('touchstart', function() {
                     this.style.transform = 'scale(0.98)';
-                });
+                    this.style.opacity = '0.9';
+                }, { passive: true });
                 
-                button.addEventListener('touchend', function() {
+                // Touch end
+                el.addEventListener('touchend', function() {
                     this.style.transform = '';
-                });
+                    this.style.opacity = '';
+                }, { passive: true });
             });
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
+                    if (this.getAttribute('href') !== '#cart') {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            window.scrollTo({
+                                top: target.offsetTop - 20,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Update active nav item on scroll
+            const sections = document.querySelectorAll('.section-header');
+            const navItems = document.querySelectorAll('nav a');
+            
+            function updateActiveNav() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 100) {
+                        current = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === current || 
+                       (current === '' && item.getAttribute('href') === '#apparel')) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', function() {
+                requestAnimationFrame(updateActiveNav);
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                productCards.forEach(card => {
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    const desc = card.querySelector('.product-description').textContent.toLowerCase();
                     
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 20,
-                            behavior: 'smooth'
-                        });
+                    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
                     }
                 });
             });
@@ -634,23 +759,15 @@
                 
                 lastTap = currentTime;
             }, { passive: false });
-        });
-        
-        // Simple search functionality
-        document.querySelector('.search-box input').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const products = document.querySelectorAll('.product-card');
             
-            products.forEach(product => {
-                const title = product.querySelector('.product-title').textContent.toLowerCase();
-                const desc = product.querySelector('.product-description').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || desc.includes(searchTerm)) {
-                    product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
-                }
-            });
+            // Fix for iOS viewport height
+            function setVH() {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+            
+            setVH();
+            window.addEventListener('resize', setVH);
         });
     </script>
 </body>
