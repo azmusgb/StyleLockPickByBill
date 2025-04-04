@@ -3,385 +3,1083 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Color Analysis Report for Jess Tanner</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Secret Squirrel Mission Catalog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Stardos+Stencil:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Lock-picking animation */
-        .lock-container {
-            position: relative;
-            width: 100px;
-            height: 150px;
-            margin: 50px auto;
-            cursor: pointer;
+        :root {
+            --olive: #556B2F;
+            --olive-dark: #3A4A24;
+            --olive-light: #6B8E23;
+            --dark-gray: #1A1A1A;
+            --tan: #D2B48C;
+            --tan-light: #E5D9C3;
+            --camo-1: #7D8C69;
+            --camo-2: #3D4D2F;
+            --camo-3: #5A6A45;
+            --danger: #C00;
         }
-        .lock-body {
-            width: 100px;
-            height: 120px;
-            background: #333;
-            border-radius: 10px;
-            position: absolute;
-            bottom: 0;
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFA;
+            color: var(--dark-gray);
+            line-height: 1.6;
         }
-        .lock-shackle {
+        
+        /* Premium Header */
+        header {
+            background: linear-gradient(135deg, var(--olive-dark), var(--olive));
+            color: white;
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--tan);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        
+        .logo {
             width: 60px;
             height: 60px;
-            border: 10px solid #333;
-            border-bottom: none;
-            border-radius: 30px 30px 0 0;
-            position: absolute;
-            top: -50px;
-            left: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,50 Q50,20 70,50 Q50,80 30,50 Z" fill="%23D2B48C" stroke="%231A1A1A" stroke-width="2"/><circle cx="40" cy="45" r="3" fill="%231A1A1A"/><circle cx="60" cy="45" r="3" fill="%231A1A1A"/><path d="M45,60 Q50,65 55,60" fill="none" stroke="%231A1A1A" stroke-width="2"/><text x="50" y="90" font-family="Arial" font-size="8" text-anchor="middle" fill="white">AUSTRALIA</text><path d="M50,25 L50,35 M45,30 L55,30" stroke="%231A1A1A" stroke-width="2"/></svg>');
+            background-size: contain;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            transition: transform 0.3s;
         }
-        .lock-pick {
-            width: 70px;
-            height: 10px;
-            background: #aaa;
-            position: absolute;
-            top: 70px;
-            left: 50px;
-            transform-origin: 0 50%;
-            animation: pickAnimation 2s ease-in-out infinite;
+        
+        .logo:hover {
+            transform: rotate(5deg);
         }
-        @keyframes pickAnimation {
-            0%, 100% {
-                transform: rotate(-30deg);
-            }
-            50% {
-                transform: rotate(30deg);
-            }
-        }
-
-        /* General Styling */
-        body {
-            font-family: 'Raleway', sans-serif;
-            line-height: 1.6;
-            color: #333;
+        
+        .header-text h1 {
+            font-family: 'Stardos Stencil', cursive;
             margin: 0;
-            padding: 20px;
-            background: linear-gradient(to right, #f0f4c3, #f4f4f4);
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #ffeb3b;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-attachment: fixed;
-            background-size: cover;
-            background-image: url('https://source.unsplash.com/random/1200x400?spring');
+        
+        .header-text p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 300;
         }
-        header h1 {
-            font-size: 2.5em;
-            color: #3e2723;
-            margin-bottom: 10px;
+        
+        /* Premium Navigation */
+        nav {
+            display: flex;
+            background: linear-gradient(to right, var(--dark-gray), var(--camo-2));
+            padding: 0;
+            position: sticky;
+            top: 84px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-top: 1px solid var(--tan);
         }
-        header p {
-            font-size: 1.2em;
-            color: #5d4037;
-        }
-        .section-title {
-            font-size: 1.8em;
-            color: #795548;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #ffeb3b;
-            display: inline-block;
-            padding-bottom: 5px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        section {
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            padding: 20px;
-            border-radius: 10px;
-            background: linear-gradient(to right, #ffeb3b, #ffe082);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        p {
-            margin: 15px 0;
-        }
-        ul {
-            margin-left: 20px;
-            list-style-type: disc;
-        }
-        ul li {
-            margin-bottom: 10px;
-        }
-        .color-swatch {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-            border-radius: 50%;
-            border: 1px solid #333;
-        }
-        .contact-info {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #ffeb3b;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .contact-info a {
-            color: #d32f2f;
+        
+        nav a {
+            color: white;
             text-decoration: none;
+            padding: 1rem 1.5rem;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        nav a.active {
+            background: var(--olive);
             font-weight: bold;
-            position: relative;
         }
-        .contact-info a::after {
-            content: '';
+        
+        nav a.active:after {
+            content: "";
             position: absolute;
-            width: 0;
-            height: 2px;
-            display: block;
-            background: #d32f2f;
-            transition: width 0.3s;
+            bottom: 0;
             left: 0;
-            bottom: -5px;
+            right: 0;
+            height: 3px;
+            background: var(--tan);
         }
-        .contact-info a:hover::after {
-            width: 100%;
+        
+        nav i {
+            font-size: 0.9rem;
         }
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: #333;
-            color: #fff;
+        
+        /* Hero Section with Parallax */
+        .hero {
+            background: 
+                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; 
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 3rem;
+            background-color: rgba(30, 30, 30, 0.7);
+            border: 2px solid var(--tan);
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h2 {
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--tan);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            background: var(--olive);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cta-button:hover {
+            background: var(--olive-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        /* Catalog Grid */
+        .catalog {
+            padding: 4rem 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 2.3rem;
+            color: var(--olive-dark);
+            margin: 3rem 0 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--tan);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+        
+        .section-header:before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 40px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23556B2F" d="M12,2L4,7V17L12,22L20,17V7L12,2M12,4L18,7.5V16.5L12,20L6,16.5V7.5L12,4Z"/></svg>');
+            background-size: contain;
+        }
+        
+        .section-header:after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--olive-light);
+        }
+        
+        .category-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .category-filter {
+            padding: 0.8rem 1.2rem;
+            background-color: white;
+            border: 2px solid var(--olive);
+            border-radius: 4px;
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 1rem;
+            min-width: 250px;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23556B2F"><path d="M7,10L12,15L17,10H7Z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-filter:hover {
+            border-color: var(--olive-light);
+        }
+        
+        .search-box {
+            position: relative;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1.2rem 0.8rem 3rem;
+            border: 2px solid var(--olive);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--olive-light);
+            box-shadow: 0 0 0 3px rgba(85, 107, 47, 0.2);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--olive);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 280px;
+            background-color: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: all 0.5s;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.03);
+        }
+        
+        .product-badges {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 2;
+        }
+        
+        .badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .badge-australia {
+            background-color: var(--olive);
+            color: white;
+        }
+        
+        .badge-new {
+            background-color: var(--tan);
+            color: var(--dark-gray);
+        }
+        
+        .badge-restricted {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .badge-stock {
+            background-color: var(--dark-gray);
+            color: white;
+        }
+        
+        .product-content {
+            padding: 1.8rem;
+            position: relative;
+        }
+        
+        .product-title {
+            font-weight: bold;
+            margin: 0 0 0.8rem 0;
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 1.4rem;
+            color: var(--dark-gray);
+            line-height: 1.3;
+        }
+        
+        .product-description {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            min-height: 60px;
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--olive);
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .product-rating {
+            color: var(--tan);
+            font-size: 0.9rem;
+        }
+        
+        .order-btn {
+            background-color: var(--olive);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .order-btn:hover {
+            background-color: var(--olive-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(85, 107, 47, 0.3);
+        }
+        
+        /* Premium Footer */
+        footer {
+            background: linear-gradient(to right, var(--dark-gray), var(--camo-2));
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Stardos Stencil', cursive;
+            color: var(--tan);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--olive);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.9;
+        }
+        
+        .footer-column a:hover {
+            color: var(--tan);
             opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .footer-column i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-form button {
+            background: var(--olive);
+            color: white;
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--olive-light);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--olive);
+            transform: translateY(-3px);
+        }
+        
+        .security-notice {
+            font-size: 0.85rem;
+            color: var(--tan-light);
+            margin-top: 3rem;
+            grid-column: 1 / -1;
+            border-top: 1px solid rgba(210, 180, 140, 0.3);
+            padding-top: 1.5rem;
+            text-align: center;
+            line-height: 1.7;
+        }
+        
+        .copyright {
+            grid-column: 1 / -1;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h2 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                height: 50vh;
+                min-height: 400px;
+                background-attachment: scroll;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            nav {
+                top: auto;
+                bottom: 0;
+                justify-content: center;
+                overflow-x: auto;
+                padding: 0;
+            }
+            
+            nav a {
+                padding: 0.8rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .hero-content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header {
+                font-size: 1.8rem;
+            }
+            
+            .category-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-green-100 to-gray-100 text-gray-800 font-raleway p-6">
-
+<body>
     <header>
-        <h1>Personal Color Analysis Report</h1>
-        <p><strong>Client Name:</strong> Jess Tanner</p>
-        <p><strong>Date:</strong> August 17, 2024</p>
-        <p><strong>Consultant:</strong> Bill</p>
-    </header>
-
-    <div class="max-w-3xl mx-auto">
-        <!-- Client Overview -->
-        <section id="client-overview" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Client Overview</h2>
-            <p><strong>Client Name:</strong> Jess Tanner</p>
-            <p><strong>Seasonal Classification:</strong> Light Spring</p>
-        </section>
-
-        <!-- Season Overview -->
-        <section id="season-overview" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Season Overview</h2>
-            <p>After analyzing your skin tone, hair color, and eye color, we have determined that you belong to the Light Spring category. This season’s palette is designed to complement your natural warmth and radiance. Light Spring is characterized by soft, warm, and light colors that harmonize with the freshness and brightness of early spring.</p>
-        </section>
-
-        <!-- Detailed Color Characteristics -->
-        <section id="detailed-color-characteristics" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Detailed Color Characteristics</h2>
-
-            <h3 class="text-lg font-semibold text-brown-600">Skin Tone</h3>
-            <ul class="ml-6 list-disc mb-4">
-                <li><strong>Undertone:</strong> Your skin has a warm undertone with a golden or peachy base, giving you a natural and healthy glow.</li>
-                <li><strong>Surface Tone:</strong> Light and delicate, your skin tone is translucent and porcelain-like.</li>
-                <li><strong>Blushing:</strong> You blush in a soft, warm pink or peach, which complements your warm undertone.</li>
-            </ul>
-
-            <h3 class="text-lg font-semibold text-brown-600">Hair Color</h3>
-            <ul class="ml-6 list-disc mb-4">
-                <li><strong>Natural Shade:</strong> Your light blonde hair with golden undertones is ideal for the Light Spring season.</li>
-                <li><strong>Best Enhancements:</strong> Consider honey blonde, golden blonde, or strawberry blonde to add more warmth to your natural hair color.</li>
-            </ul>
-
-            <h3 class="text-lg font-semibold text-brown-600">Eye Color</h3>
-            <p>Your eyes likely have a light, warm hue, such as soft green, warm hazel, or light blue with golden flecks. To enhance your natural beauty, consider incorporating soft greens, warm golds, and light peaches into your wardrobe and makeup routine. These colors will harmonize beautifully with your light, warm eye color.</p>
-
-            <p>Since your skin, hair, and eyes have a low to medium contrast level, soft, blended colors will complement your natural features effectively.</p>
-        </section>
-
-        <!-- Lock-picking Animation Section -->
-        <section id="lock-picking-animation" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4 text-center">Unlock Your Style Potential</h2>
-            <div class="flex justify-center mb-8 lock-container" id="lock-pick-trigger">
-                <div class="lock-body"></div>
-                <div class="lock-shackle"></div>
-                <div class="lock-pick"></div>
+        <div class="logo-container">
+            <div class="logo floating"></div>
+            <div class="header-text">
+                <h1>SECRET SQUIRREL MISSION CATALOG</h1>
+                <p>Official issue tactical gear & themed merchandise</p>
             </div>
-            <p class="text-center">Your personal style is the key to unlocking your confidence. Let’s find the right fit for you.</p>
-        </section>
-
-        <!-- Color Recommendations -->
-        <section id="color-recommendations" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Color Recommendations</h2>
-
-            <h3 class="text-lg font-semibold text-brown-600">Clothing Palette</h3>
-            <ul class="ml-6 list-disc mb-4">
-                <li><strong>Neutrals:</strong> Warm ivory, light camel, soft beige, and light taupe are versatile neutrals that will complement your wardrobe well.</li>
-                <li><strong>Primary Colors:</strong> Soft pastels like peach, apricot, coral, warm pink, light mint, and soft aqua complement your complexion.</li>
-                <li><strong>Accent Colors:</strong> Light periwinkle, soft lavender, and gentle yellows add depth without overwhelming your appearance.</li>
-                <li><strong>Colors to Avoid:</strong> Dark, cool tones like black, stark white, deep navy, and dark grays may clash with your natural coloring.</li>
-            </ul>
-
-            <h3 class="text-lg font-semibold text-brown-600">Makeup Palette</h3>
-            <ul class="ml-6 list-disc mb-4">
-                <li><strong>Foundation:</strong> Opt for a foundation with a warm, golden, or peach undertone to achieve a radiant finish.</li>
-                <li><strong>Blush:</strong> Soft peach, warm pink, or coral blushes will enhance your natural flush.</li>
-                <li><strong>Eyeshadow:</strong> Warm neutrals like light gold, peach, or soft bronze, along with warm greens or soft lavenders, are ideal.</li>
-                <li><strong>Lipstick:</strong> Coral, peach, soft apricot, or warm pink lipsticks complement your eye color; avoid deep, cool shades.</li>
-            </ul>
-
-            <h3 class="text-lg font-semibold text-brown-600">Hair Color</h3>
-            <ul class="ml-6 list-disc mb-4">
-                <li><strong>Best Tones:</strong> Warm tones, such as honey blonde, golden blonde, light caramel, or strawberry blonde, are ideal for achieving a harmonious complexion.</li>
-                <li>Avoid: Ashy, overly cool tones, or dark, intense shades that deviate from your natural hue.</li>
-            </ul>
-
-            <h3 class="text-lg font-semibold text-brown-600">Accessories Palette</h3>
-            <ul class="ml-6 list-disc mb-4">
-                <li><strong>Jewelry:</strong> Warm metals, including gold, rose gold, and copper, harmonize beautifully with various skin tones.</li>
-                <li><strong>Scarves & Hats:</strong> Opt for soft, warm pastels or light neutrals to enhance the overall aesthetic of your outfits.</li>
-            </ul>
-        </section>
-
-        <!-- Wardrobe and Styling Recommendations -->
-        <section id="wardrobe-styling" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Wardrobe and Styling Recommendations</h2>
-            <p>To achieve a cohesive and flattering appearance, consider incorporating diverse textures and patterns into your wardrobe. Opt for clothing items in harmonious complementary colors, such as soft greens and warm golds, to enhance your natural beauty. Additionally, consider incorporating accessories that complement your chosen outfits, such as warm jewelry and soft scarves.</p>
-
-            <p>As a Light Spring, your most flattering colors are warm, light, and fresh. By incorporating these tones into your wardrobe, makeup, and accessories, you will accentuate the warmth and clarity of your complexion. Adhering to the Light Spring color palette will ensure that you consistently radiate and harmonize.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Clothing and Accessories</h3>
-            <p>Complement your best colors with versatile clothing items. Light Spring colors, inherently harmonious, facilitate easy mixing and matching. Begin with essential neutral pieces and incorporate pops of color through accessories.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Prints and Patterns</h3>
-            <p>Select patterns that harmonize with your preferred colors. Opt for soft florals, warm pastels, and light, airy designs. Avoid high-contrast patterns that may overwhelm your delicate features.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Outerwear</h3>
-            <p>Choose outerwear in warm neutrals such as camel, beige, or light taupe. These versatile options layer well over your colorful clothing choices, maintaining a cohesive look.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Event Styling</h3>
-            <p>For formal occasions, opt for softer shades like light coral, peach, or soft gold. Pair with delicate jewelry in gold or rose gold to complete the elegant ensemble.</p>
-        </section>
-
-        <!-- Retainer Services & Contract Terms -->
-        <section id="retainer-services" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Retainer Services & Contract Terms</h2>
-            <p>If you seek ongoing support to refine and maintain your style, I offer both monthly and yearly retainer services. These services provide personalized assistance with seasonal wardrobe updates, makeup consultations, special event styling, and more.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Retainer Service Packages</h3>
-            <p><strong>Monthly Retainer:</strong> $150 per month</p>
-            <ul class="ml-6 list-disc mb-4">
-                <li>Monthly wardrobe consultation (virtual or in-person) to refresh your wardrobe with new pieces and ensure they harmonize with your Light Spring color palette.</li>
-                <li>Personal shopping assistance to help you find and purchase items that complement your color season.</li>
-                <li>Makeup consultations to stay informed about makeup trends and product recommendations that suit your Light Spring coloring.</li>
-                <li>Guidance on selecting outfits and accessories for special occasions.</li>
-            </ul>
-            <p><strong>Terms:</strong> This contract renews monthly. You may cancel at any time with a 30-day written notice.</p>
-
-            <p><strong>Yearly Retainer:</strong> $1,200 per year</p>
-            <ul class="ml-6 list-disc mb-4">
-                <li>All monthly retainer inclusions.</li>
-                <li>Comprehensive wardrobe updates for each season.</li>
-                <li>Personalized makeup palettes tailored to your specific needs.</li>
-                <li>Expertise in analyzing emerging makeup and fashion trends.</li>
-            </ul>
-            <p><strong>Terms:</strong> This contract renews annually. You may cancel at any time with a 30-day written notice.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Seasonal Wardrobe Overhaul</h3>
-            <p>Four comprehensive sessions annually to harmonize your wardrobe with seasonal shifts. This ensures you have an array of appropriate attire for various occasions.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Full Makeup & Hair Consultation</h3>
-            <p>Bi-annual consultations to maintain your makeup and hairstyle in contemporary fashion, complementing your Light Spring palette.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Unlimited Event Styling</h3>
-            <p>Preferential access to styling services for all special events throughout the year.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Personal Shopping Assistance</h3>
-            <p>Ongoing support in selecting and acquiring the most suitable items for your personal style.</p>
-
-            <p><strong>Annual Fee:</strong> $1,500 (a savings of $300)</p>
-            <p><strong>Terms:</strong> This agreement is valid for one year commencing from the date of its signature. Early termination is subject to a cancellation fee of $150.</p>
-        </section>
-
-        <!-- Referral & VIP Program -->
-        <section id="referral-vip" class="bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Referral & VIP Program</h2>
-
-            <h3 class="text-lg font-semibold text-brown-600">Referral Program</h3>
-            <p><strong>Earn Rewards:</strong> For each new client you refer to Style Lock-Picked by Bill, you will earn a $50 credit towards your next service or monthly retainer. Your referred client will also receive a 10% discount on their initial service.</p>
-            <p><strong>Unlimited Referrals:</strong> There is no limit to the number of clients you can refer, allowing you to accumulate credits for substantial savings.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">VIP Membership</h3>
-            <p><strong>Exclusive Benefits:</strong> As a VIP member, you will gain early access to new services, exclusive discounts, and priority booking. VIP members also receive a complimentary additional session annually—either a wardrobe consultation or event styling session, based on your preference.</p>
-            <p><strong>Membership Fee:</strong> $200 annually for non-retainer clients or $100 annually for retainer clients.</p>
-
-            <h3 class="text-lg font-semibold text-brown-600">Friends & Family Pricing Plan</h3>
-            <p><strong>Discounted Rates:</strong> Enjoy a 15% discount on all services when you enroll in the Friends & Family Pricing Plan. This discount is available to you and up to four additional family members or friends.</p>
-            <p><strong>Enrollment Fee:</strong> $250 annually per group.</p>
-        </section>
-
-        <!-- Contact Information -->
-        <section class="contact-info bg-yellow-200 p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-semibold text-brown-700 mb-4">Contact Information</h2>
-            <p>If you are interested in retaining my services, joining a program, or have any questions, please do not hesitate to contact me.</p>
-            <p><strong>Business Name:</strong> Style Lock-Picked by Bill</p>
-            <p><strong>Phone:</strong> 803-630-9847</p>
-            <p><strong>Website:</strong> <a href="http://www.StyleLockPickByBill.com" target="_blank" class="text-red-500 font-bold hover:underline">www.StyleLockPickByBill.com</a></p>
-            <p><strong>Email:</strong> <a href="mailto:Bill@StyleLockPick.com" class="text-red-500 font-bold hover:underline">Bill@StyleLockPick.com</a></p>
-        </section>
-    </div>
-
+        </div>
+    </header>
+    
+    <nav>
+        <a href="#apparel" class="active"><i class="fas fa-tshirt"></i> Apparel</a>
+        <a href="#vehicles"><i class="fas fa-truck-monster"></i> Vehicles</a>
+        <a href="#equipment"><i class="fas fa-tools"></i> Equipment</a>
+        <a href="#australian"><i class="fas fa-flag"></i> Australian</a>
+        <a href="#munitions"><i class="fas fa-shield-alt"></i> Munitions</a>
+        <a href="#heavy"><i class="fas fa-tank"></i> Heavy Gear</a>
+        <a href="#pets"><i class="fas fa-paw"></i> Pet Gear</a>
+        <a href="#promo"><i class="fas fa-bullhorn"></i> Promo</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h2>MISSION ESSENTIAL GEAR</h2>
+            <p>Premium tactical equipment and mission-branded merchandise for operatives and supporters. Built for the field, designed for excellence.</p>
+            <button class="cta-button">
+                <i class="fas fa-binoculars"></i> Explore Catalog
+            </button>
+        </div>
+    </section>
+    
+    <main class="catalog">
+        <div class="section-header" id="apparel">MILITARY APPAREL & GEAR</div>
+        
+        <div class="category-controls">
+            <select class="category-filter">
+                <option>All Categories</option>
+                <option selected>Military Apparel</option>
+                <option>Vehicles</option>
+                <option>Field Equipment</option>
+                <option>Australian Items</option>
+                <option>Munitions</option>
+                <option>Heavy Equipment</option>
+                <option>Pet Gear</option>
+                <option>Promo Materials</option>
+            </select>
+            
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search mission gear...">
+            </div>
+        </div>
+        
+        <div class="product-grid">
+            <!-- Tactical Shirt -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1591030434469-3d78c7b17820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">
+                        <i class="fas fa-flag"></i> AUSTRALIA
+                    </div>
+                    <div class="badge badge-new">
+                        <i class="fas fa-certificate"></i> NEW
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">TACTICAL OPERATOR SHIRT</h3>
+                    <p class="product-description">Advanced combat shirt with moisture-wicking fabric, reinforced elbows, and mission emblem chest patch. Designed for extended field operations in all climates.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$129.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Combat Vest -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="product-badges">
+                    <div class="badge badge-stock">
+                        <i class="fas fa-box-open"></i> LOW STOCK
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">MODULAR TACTICAL VEST</h3>
+                    <p class="product-description">Mission-specific plate carrier with MOLLE webbing system, adjustable cummerbund, and hydration pouch compatibility. Features mission insignia back panel.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$279.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Combat Pants -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">
+                        <i class="fas fa-flag"></i> AUSTRALIA
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">SPEC OPS COMBAT PANTS</h3>
+                    <p class="product-description">Durable tactical trousers with ripstop fabric, knee pad inserts, and multiple cargo pockets. Features subtle mission logo on thigh and reinforced stitching.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$119.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header" id="vehicles">VEHICLES & WRAPS</div>
+        <div class="product-grid">
+            <!-- Humvee Wrap -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1617196034183-421b4917c92d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="product-content">
+                    <h3 class="product-title">HMMWV FULL CAMO WRAP</h3>
+                    <p class="product-description">Complete tactical wrap for Humvee featuring mission insignia and digital camouflage pattern. UV-resistant vinyl with matte finish.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$3,299.00</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Tactical Truck -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">
+                        <i class="fas fa-flag"></i> AUSTRALIA
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">TACTICAL TRUCK DECAL SET</h3>
+                    <p class="product-description">High-visibility door and hood decals for military transport vehicles. Weatherproof adhesive with mission emblem and unit markings.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$599.00</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header" id="equipment">FIELD EQUIPMENT</div>
+        <div class="product-grid">
+            <!-- Tactical Backpack -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1517438476312-10d79c077509?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="product-badges">
+                    <div class="badge badge-new">
+                        <i class="fas fa-certificate"></i> NEW
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">MISSION BACKPACK SYSTEM</h3>
+                    <p class="product-description">72-hour assault pack with modular attachment points, hydration bladder compartment, and mission emblem. Water-resistant and durable construction.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$189.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Field Mess Kit -->
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c811e6aefb0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">
+                        <i class="fas fa-flag"></i> AUSTRALIA
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">FIELD MESS KIT</h3>
+                    <p class="product-description">Stainless steel eating set with mission logo engraving. Includes plate, cup, utensils, and carrying case. Dishwasher safe.</p>
+                    <div class="product-meta">
+                        <span class="product-price">$69.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>MISSION SUPPORT</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-phone-alt"></i> Contact HQ</a></li>
+                    <li><a href="#"><i class="fas fa-truck"></i> Shipping Info</a></li>
+                    <li><a href="#"><i class="fas fa-exchange-alt"></i> Returns</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    <li><a href="#"><i class="fas fa-file-alt"></i> Catalog PDF</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>ABOUT</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-history"></i> Our Story</a></li>
+                    <li><a href="#"><i class="fas fa-lock"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Terms</a></li>
+                    <li><a href="#"><i class="fas fa-award"></i> Mission Standards</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>CONNECT</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Newsletter</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>MISSION UPDATES</h3>
+                <p>Subscribe for tactical gear releases and mission news:</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+            
+            <div class="security-notice">
+                <p><i class="fas fa-shield-alt"></i> All munitions and tactical equipment comply with Australian defense standards and export regulations. Some items require verification of credentials and are subject to availability.</p>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 SECRET SQUIRREL MISSION. ALL RIGHTS RESERVED. | Designed for operatives by operatives</p>
+            </div>
+        </div>
+    </footer>
+    
     <script>
-        // Play the Facebook video in a new tab when the lock-picking animation is clicked
-        document.getElementById('lock-pick-trigger').addEventListener('click', function() {
-            window.open('https://www.facebook.com/share/r/yCcNgSaMY3vpPxR1/?mibextid=UalRPS', '_blank');
+        // Enhanced Sticky Navigation
+        const nav = document.querySelector('nav');
+        const hero = document.querySelector('.hero');
+        const heroHeight = hero.offsetHeight;
+        
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > heroHeight - 100) {
+                nav.style.position = 'fixed';
+                nav.style.top = '0';
+                nav.style.background = 'linear-gradient(to right, var(--dark-gray), var(--camo-3))';
+            } else {
+                nav.style.position = 'sticky';
+                nav.style.top = '84px';
+                nav.style.background = 'linear-gradient(to right, var(--dark-gray), var(--camo-2))';
+            }
         });
-
-        // Section Visibility on Scroll (for the smooth reveal)
-        document.addEventListener("scroll", function() {
-            const sections = document.querySelectorAll("section");
+        
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Product Card Animation
+        const productCards = document.querySelectorAll('.product-card');
+        
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
+            });
+        });
+        
+        // Simulated Filter Functionality
+        document.querySelector('.category-filter').addEventListener('change', function() {
+            const category = this.value;
+            const sections = document.querySelectorAll('.section-header');
+            
             sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    section.classList.add("visible");
+                if (category === 'All Categories' || 
+                    section.textContent.includes(category.toUpperCase())) {
+                    section.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
-
-        // Tooltip Content Management
-        const tooltipContent = {
-            'Light Spring': 'Light Spring is characterized by fresh, light, and warm colors that evoke the brightness and vitality of early spring.'
-        };
-
-        document.querySelector('.tooltip').addEventListener('mouseenter', function () {
-            document.querySelector('.tooltiptext').textContent = tooltipContent['Light Spring'];
+        
+        // Search Functionality
+        document.querySelector('.search-box input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const products = document.querySelectorAll('.product-card');
+            
+            products.forEach(product => {
+                const title = product.querySelector('.product-title').textContent.toLowerCase();
+                const description = product.querySelector('.product-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
