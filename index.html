@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Squirrel Mission Catalog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Stardos+Stencil:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Stardos+Stencil:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -15,52 +15,63 @@
             --tan: #D2B48C;
             --tan-light: #E5D9C3;
             --danger: #C00;
-            --transition: 0.2s ease-out;
+            --light-bg: #F8F8F8;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
-        
+
         body {
             font-family: 'Roboto', sans-serif;
-            background: #FAFAFA;
+            background-color: var(--light-bg);
             color: var(--dark-gray);
-            line-height: 1.5;
-            padding-bottom: 60px;
+            line-height: 1.6;
+            padding-bottom: 80px;
         }
-        
+
+        /* Header */
         header {
             background: linear-gradient(135deg, var(--olive-dark), var(--olive));
             color: white;
-            padding: 12px 15px;
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
-            border-bottom: 2px solid var(--tan);
+            justify-content: space-between;
+            border-bottom: 3px solid var(--tan);
         }
-        
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
         .logo {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,50 Q50,20 70,50 Q50,80 30,50 Z" fill="%23D2B48C" stroke="%231A1A1A" stroke-width="2"/><circle cx="40" cy="45" r="3" fill="%231A1A1A"/><circle cx="60" cy="45" r="3" fill="%231A1A1A"/><path d="M45,60 Q50,65 55,60" fill="none" stroke="%231A1A1A" stroke-width="2"/><text x="50" y="90" font-family="Arial" font-size="8" text-anchor="middle" fill="white">AUSTRALIA</text></svg>');
             background-size: contain;
-            margin-right: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
-        
+
         .header-text h1 {
             font-family: 'Stardos Stencil', cursive;
-            font-size: 1.1rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        
+
+        /* Navigation */
         nav {
             position: fixed;
             bottom: 0;
@@ -69,422 +80,719 @@
             background: var(--dark-gray);
             display: flex;
             justify-content: space-around;
-            padding: 8px 0;
+            padding: 0.8rem 0;
             z-index: 999;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
         }
-        
+
         nav a {
             color: white;
             text-decoration: none;
-            padding: 8px;
-            font-size: 0.7rem;
+            padding: 0.5rem;
+            font-size: 0.8rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 60px;
+            transition: var(--transition);
         }
-        
+
         nav i {
-            font-size: 1.1rem;
-            margin-bottom: 3px;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
         }
-        
+
         nav a.active {
             color: var(--tan);
+            transform: translateY(-5px);
         }
-        
+
+        /* Hero Section */
         .hero {
-            background: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80') center/cover;
-            height: 40vh;
-            min-height: 250px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            min-height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 2rem;
         }
-        
+
         .hero-content {
             background-color: rgba(30, 30, 30, 0.8);
             border: 2px solid var(--tan);
             border-radius: 8px;
-            padding: 20px;
-            width: 100%;
-            max-width: 400px;
+            padding: 2rem;
+            max-width: 600px;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
-        
+
         .hero h2 {
             font-family: 'Stardos Stencil', cursive;
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
             color: var(--tan);
+            letter-spacing: 1px;
         }
-        
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
         .cta-button {
             background: var(--olive);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 0.8rem 1.8rem;
             border-radius: 4px;
             font-family: 'Stardos Stencil', cursive;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        
+
+        .cta-button:hover {
+            background: var(--olive-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        /* Main Content */
         main {
-            padding: 20px 15px;
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-        
+
         .section-header {
             font-family: 'Stardos Stencil', cursive;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             color: var(--olive-dark);
-            margin: 25px 0 15px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid var(--tan);
+            margin: 3rem 0 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--tan);
+            position: relative;
         }
-        
+
+        .section-header::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--olive-light);
+        }
+
+        /* Product Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
         }
-        
+
         .product-card {
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.1);
         }
-        
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
         .product-image {
-            height: 180px;
+            height: 200px;
             background-size: cover;
             background-position: center;
             position: relative;
         }
-        
-        .badge {
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.6rem;
-            font-weight: bold;
+
+        .product-badges {
             position: absolute;
             top: 10px;
             right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
-        
+
+        .badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
         .badge-australia {
             background-color: var(--olive);
             color: white;
         }
-        
+
         .badge-new {
             background-color: var(--tan);
             color: var(--dark-gray);
         }
-        
-        .product-content {
-            padding: 15px;
+
+        .badge-restricted {
+            background-color: var(--danger);
+            color: white;
         }
-        
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
         .product-title {
             font-family: 'Stardos Stencil', cursive;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-gray);
         }
-        
+
+        .product-description {
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            color: #555;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
         .product-price {
             font-weight: bold;
             color: var(--olive);
-            font-size: 1.1rem;
-            margin: 10px 0;
+            font-size: 1.2rem;
         }
-        
+
+        .product-rating {
+            color: var(--tan);
+            font-size: 0.9rem;
+        }
+
         .order-btn {
             background: var(--olive);
             color: white;
             border: none;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 0.8rem;
+            border-radius: 4px;
             width: 100%;
             font-family: 'Stardos Stencil', cursive;
+            font-size: 0.9rem;
             cursor: pointer;
+            transition: var(--transition);
         }
-        
+
+        .order-btn:hover {
+            background: var(--olive-light);
+        }
+
+        /* Footer */
         footer {
             background: var(--dark-gray);
             color: white;
-            padding: 25px 15px;
-            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
         }
-        
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Stardos Stencil', cursive;
+            color: var(--tan);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--tan);
+        }
+
+        .security-notice {
+            font-size: 0.8rem;
+            color: var(--tan-light);
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(210, 180, 140, 0.3);
+            grid-column: 1 / -1;
+        }
+
         .copyright {
+            text-align: center;
+            margin-top: 2rem;
             font-size: 0.8rem;
             opacity: 0.7;
+            grid-column: 1 / -1;
         }
-        
-        @media (min-width: 600px) {
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .hero {
+                height: 40vh;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
             .product-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
-        
-        @media (min-width: 992px) {
+
+        @media (max-width: 480px) {
+            .header-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                height: 35vh;
+                min-height: 250px;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-header {
+                font-size: 1.5rem;
+            }
+
             .product-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="logo"></div>
-        <div class="header-text">
-            <h1>SECRET SQUIRREL MISSION CATALOG</h1>
+        <div class="logo-container">
+            <div class="logo"></div>
+            <div class="header-text">
+                <h1>SECRET SQUIRREL MISSION</h1>
+            </div>
         </div>
     </header>
-    
+
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h2>MISSION ESSENTIAL GEAR</h2>
+            <h2>TACTICAL OPERATIONS GEAR</h2>
+            <p>Premium equipment for field operatives and mission support</p>
             <button class="cta-button" id="exploreBtn">
-                <i class="fas fa-binoculars"></i> Explore Products
+                <i class="fas fa-binoculars"></i> Explore Catalog
             </button>
         </div>
     </section>
-    
+
+    <!-- Main Content -->
     <main>
-        <!-- MILITARY APPAREL -->
+        <!-- Military Apparel -->
         <div class="section-header" id="apparel">MILITARY APPAREL</div>
         <div class="product-grid">
+            <!-- Tactical Shirt -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.helikon-tex.com/media/catalog/product/c/m/cm-shirt-tm-fg-main.jpg')"></div>
-                <div class="badge badge-australia">AUS</div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">AUSTRALIAN MADE</div>
+                </div>
                 <div class="product-content">
                     <h3 class="product-title">TACTICAL COMBAT SHIRT</h3>
-                    <p>MultiCam pattern with reinforced elbows</p>
-                    <div class="product-price">$129.99</div>
+                    <p class="product-description">MultiCam pattern with reinforced elbows and mission insignia</p>
+                    <div class="product-meta">
+                        <span class="product-price">$129.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
                     <button class="order-btn" onclick="addToCart('Tactical Combat Shirt', 129.99)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
-            
+
+            <!-- Combat Pants -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.helikon-tex.com/media/catalog/product/c/m/cm-pants-tm-odg-main.jpg')"></div>
                 <div class="product-content">
                     <h3 class="product-title">SPEC OPS COMBAT PANTS</h3>
-                    <p>Ripstop fabric with knee pad inserts</p>
-                    <div class="product-price">$119.99</div>
+                    <p class="product-description">Ripstop fabric with knee pad inserts and cargo pockets</p>
+                    <div class="product-meta">
+                        <span class="product-price">$119.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        </span>
+                    </div>
                     <button class="order-btn" onclick="addToCart('Spec Ops Combat Pants', 119.99)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
-            
+
+            <!-- Tactical Vest -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.viperta.com/wp-content/uploads/2021/05/VT-PC-01-Plate-Carrier-Vest-Multicam-1.jpg')"></div>
-                <div class="badge badge-new">NEW</div>
+                <div class="product-badges">
+                    <div class="badge badge-new">NEW</div>
+                </div>
                 <div class="product-content">
-                    <h3 class="product-title">MODULAR TACTICAL VEST</h3>
-                    <p>MOLLE compatible plate carrier</p>
-                    <div class="product-price">$279.99</div>
-                    <button class="order-btn" onclick="addToCart('Modular Tactical Vest', 279.99)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    <h3 class="product-title">MODULAR PLATE CARRIER</h3>
+                    <p class="product-description">MOLLE compatible tactical vest with mission insignia</p>
+                    <div class="product-meta">
+                        <span class="product-price">$279.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn" onclick="addToCart('Modular Plate Carrier', 279.99)">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
-            
+
+            <!-- Tactical Boots -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.tacticalboots.com.au/cdn/shop/products/511-Tactical-ATAC-8-Side-Zip-Boots-Black-1.jpg')"></div>
                 <div class="product-content">
                     <h3 class="product-title">TACTICAL ASSAULT BOOTS</h3>
-                    <p>8" side-zip with ankle support</p>
-                    <div class="product-price">$179.99</div>
+                    <p class="product-description">8" side-zip boots with ankle support and non-slip soles</p>
+                    <div class="product-meta">
+                        <span class="product-price">$179.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i>
+                        </span>
+                    </div>
                     <button class="order-btn" onclick="addToCart('Tactical Assault Boots', 179.99)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
         </div>
-        
-        <!-- VEHICLES -->
-        <div class="section-header" id="vehicles">VEHICLES</div>
+
+        <!-- Vehicles -->
+        <div class="section-header" id="vehicles">VEHICLE SYSTEMS</div>
         <div class="product-grid">
+            <!-- Humvee Wrap -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.military-today.com/army/m998_humvee_camo.jpg')"></div>
                 <div class="product-content">
-                    <h3 class="product-title">HMMWV CAMO WRAP</h3>
-                    <p>Full vehicle camouflage wrap</p>
-                    <div class="product-price">$3,299.00</div>
-                    <button class="order-btn" onclick="addToCart('HMMWV Camo Wrap', 3299)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    <h3 class="product-title">HMMWV CAMOUFLAGE WRAP</h3>
+                    <p class="product-description">Full vehicle wrap with mission insignia and tactical pattern</p>
+                    <div class="product-meta">
+                        <span class="product-price">$3,299.00</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn" onclick="addToCart('HMMWV Camouflage Wrap', 3299)">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
-            
+
+            <!-- Tactical Truck Decals -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.army.mod.uk/media/15314/cttroop.jpg')"></div>
-                <div class="badge badge-australia">AUS</div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">AUSTRALIAN MADE</div>
+                </div>
                 <div class="product-content">
                     <h3 class="product-title">TACTICAL TRUCK DECALS</h3>
-                    <p>High-visibility vehicle markings</p>
-                    <div class="product-price">$599.00</div>
+                    <p class="product-description">High-visibility door and hood markings with mission emblem</p>
+                    <div class="product-meta">
+                        <span class="product-price">$599.00</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        </span>
+                    </div>
                     <button class="order-btn" onclick="addToCart('Tactical Truck Decals', 599)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
         </div>
-        
-        <!-- FIELD EQUIPMENT -->
+
+        <!-- Field Equipment -->
         <div class="section-header" id="equipment">FIELD EQUIPMENT</div>
         <div class="product-grid">
+            <!-- Tactical Backpack -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.511tactical.com/media/catalog/product/cache/1/image/1200x/040ec09b1e35df139433887a97daa66f/5/9/59201_01.jpg')"></div>
                 <div class="product-content">
-                    <h3 class="product-title">TACTICAL BACKPACK</h3>
-                    <p>72-hour assault pack with hydration</p>
-                    <div class="product-price">$189.99</div>
-                    <button class="order-btn" onclick="addToCart('Tactical Backpack', 189.99)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    <h3 class="product-title">72-HOUR ASSAULT PACK</h3>
+                    <p class="product-description">Hydration compatible backpack with mission patch</p>
+                    <div class="product-meta">
+                        <span class="product-price">$189.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <button class="order-btn" onclick="addToCart('72-Hour Assault Pack', 189.99)">
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
-            
+
+            <!-- Field Mess Kit -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.surplus.com/media/catalog/product/cache/6f9e0726b8f8e8d6a3e0f3d6a8e1b4a5/1/2/1260-01.jpg')"></div>
-                <div class="badge badge-australia">AUS</div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">AUSTRALIAN MADE</div>
+                </div>
                 <div class="product-content">
                     <h3 class="product-title">FIELD MESS KIT</h3>
-                    <p>Stainless steel eating set</p>
-                    <div class="product-price">$69.99</div>
+                    <p class="product-description">Stainless steel eating set with mission engraving</p>
+                    <div class="product-meta">
+                        <span class="product-price">$69.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </span>
+                    </div>
                     <button class="order-btn" onclick="addToCart('Field Mess Kit', 69.99)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
         </div>
-        
-        <!-- MUNITIONS -->
+
+        <!-- Munitions -->
         <div class="section-header" id="munitions">MUNITIONS</div>
         <div class="product-grid">
+            <!-- Ammo Crate -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.armysurpluswarehouse.com/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/a/m/ammo-can-30-cal-1.jpg')"></div>
+                <div class="product-badges">
+                    <div class="badge badge-restricted">ID REQUIRED</div>
+                </div>
                 <div class="product-content">
                     <h3 class="product-title">AMMUNITION CRATE</h3>
-                    <p>30 cal sealed container</p>
-                    <div class="product-price">$129.99</div>
+                    <p class="product-description">Sealed container with mission stenciling</p>
+                    <div class="product-meta">
+                        <span class="product-price">$129.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                        </span>
+                    </div>
                     <button class="order-btn" onclick="addToCart('Ammunition Crate', 129.99)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
         </div>
-        
-        <!-- HEAVY EQUIPMENT -->
+
+        <!-- Heavy Equipment -->
         <div class="section-header" id="heavy">HEAVY EQUIPMENT</div>
         <div class="product-grid">
+            <!-- Ballistic Armor -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.military.com/sites/default/files/styles/full_breakpoints_theme_mlt_2x/public/2021-03/body-armor-1600.jpg')"></div>
-                <div class="badge badge-new">NEW</div>
+                <div class="product-badges">
+                    <div class="badge badge-new">NEW</div>
+                </div>
                 <div class="product-content">
                     <h3 class="product-title">BALLISTIC ARMOR SET</h3>
-                    <p>Level IV protective plates</p>
-                    <div class="product-price">$1,299.00</div>
+                    <p class="product-description">Level IV plates with mission insignia</p>
+                    <div class="product-meta">
+                        <span class="product-price">$1,299.00</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
                     <button class="order-btn" onclick="addToCart('Ballistic Armor Set', 1299)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
         </div>
-        
-        <!-- PET GEAR -->
+
+        <!-- K9 Gear -->
         <div class="section-header" id="pets">K9 OPERATIVE GEAR</div>
         <div class="product-grid">
+            <!-- Dog Vest -->
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://www.rayallen.com/cdn/shop/products/RAM2020-K9-Vest-MC-1_1200x1200.jpg')"></div>
-                <div class="badge badge-australia">AUS</div>
+                <div class="product-badges">
+                    <div class="badge badge-australia">AUSTRALIAN MADE</div>
+                </div>
                 <div class="product-content">
                     <h3 class="product-title">K9 TACTICAL VEST</h3>
-                    <p>Mission-branded protective gear</p>
-                    <div class="product-price">$149.99</div>
+                    <p class="product-description">Mission-branded protective vest for working dogs</p>
+                    <div class="product-meta">
+                        <span class="product-price">$149.99</span>
+                        <span class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        </span>
+                    </div>
                     <button class="order-btn" onclick="addToCart('K9 Tactical Vest', 149.99)">
-                        <i class="fas fa-cart-plus"></i> Add to Cart
+                        <i class="fas fa-cart-plus"></i> Add to Mission Pack
                     </button>
                 </div>
             </div>
         </div>
     </main>
-    
+
+    <!-- Footer -->
     <footer>
-        <div class="copyright">
-            © 2024 SECRET SQUIRREL MISSION
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>MISSION SUPPORT</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-phone-alt"></i> Contact HQ</a></li>
+                    <li><a href="#"><i class="fas fa-truck"></i> Shipping</a></li>
+                    <li><a href="#"><i class="fas fa-exchange-alt"></i> Returns</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>ABOUT</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-history"></i> Our Story</a></li>
+                    <li><a href="#"><i class="fas fa-lock"></i> Privacy</a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>CONNECT</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                </ul>
+            </div>
+
+            <div class="security-notice">
+                <p><i class="fas fa-shield-alt"></i> All munitions and equipment comply with Australian defense standards and export regulations.</p>
+            </div>
+
+            <div class="copyright">
+                <p>© 2024 SECRET SQUIRREL MISSION. ALL RIGHTS RESERVED.</p>
+            </div>
         </div>
     </footer>
-    
+
+    <!-- Bottom Navigation -->
     <nav>
         <a href="#apparel"><i class="fas fa-tshirt"></i> Apparel</a>
-        <a href="#vehicles"><i class="fas fa-truck"></i> Vehicles</a>
+        <a href="#vehicles"><i class="fas fa-truck-monster"></i> Vehicles</a>
         <a href="#equipment"><i class="fas fa-tools"></i> Equipment</a>
         <a href="#munitions"><i class="fas fa-shield-alt"></i> Munitions</a>
         <a href="#" id="cartBtn"><i class="fas fa-shopping-cart"></i> Cart</a>
     </nav>
 
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
     <script>
-        // Shopping Cart Functionality
+        // Shopping Cart
         let cart = [];
         let cartCount = 0;
-        
+
+        // Add to Cart Function
         function addToCart(name, price) {
             cart.push({name, price});
             cartCount++;
             updateCartCount();
-            showToast(`${name} added to cart`);
+            showToast(`${name} added to mission pack`);
         }
-        
+
+        // Update Cart Count in Navigation
         function updateCartCount() {
             const cartBtn = document.getElementById('cartBtn');
             cartBtn.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${cartCount})`;
         }
-        
+
+        // Show Toast Notification
         function showToast(message) {
-            const toast = document.createElement('div');
-            toast.style.position = 'fixed';
-            toast.style.bottom = '80px';
-            toast.style.left = '50%';
-            toast.style.transform = 'translateX(-50%)';
-            toast.style.backgroundColor = 'rgba(0,0,0,0.7)';
-            toast.style.color = 'white';
-            toast.style.padding = '10px 20px';
-            toast.style.borderRadius = '5px';
-            toast.style.zIndex = '1000';
-            toast.style.transition = 'all 0.3s';
+            const toast = document.getElementById('toast');
             toast.textContent = message;
-            
-            document.body.appendChild(toast);
+            toast.classList.add('show');
             
             setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(toast);
-                }, 300);
-            }, 2000);
+                toast.classList.remove('show');
+            }, 3000);
         }
-        
-        // Button Functionality
+
+        // Explore Button
         document.getElementById('exploreBtn').addEventListener('click', function() {
-            document.querySelector('#apparel').scrollIntoView({behavior: 'smooth'});
+            document.querySelector('#apparel').scrollIntoView({
+                behavior: 'smooth'
+            });
         });
-        
+
+        // Cart Button
         document.getElementById('cartBtn').addEventListener('click', function(e) {
             e.preventDefault();
+            
             if(cart.length === 0) {
-                showToast("Your cart is empty");
+                showToast("Your mission pack is empty");
             } else {
-                let cartSummary = "YOUR MISSION GEAR:\n\n";
+                let cartSummary = "MISSION PACK CONTENTS:\n\n";
                 let total = 0;
                 
                 cart.forEach(item => {
@@ -496,21 +804,23 @@
                 alert(cartSummary);
             }
         });
-        
-        // Navigation
+
+        // Smooth Scrolling for Navigation
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if(this.getAttribute('href').startsWith('#')) {
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if(target) {
-                        target.scrollIntoView({behavior: 'smooth'});
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
                     }
                 }
             });
         });
-        
-        // Update active nav item on scroll
+
+        // Update Active Navigation Item on Scroll
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('.section-header');
             const navItems = document.querySelectorAll('nav a');
