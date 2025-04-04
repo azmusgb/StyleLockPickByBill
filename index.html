@@ -71,6 +71,22 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
+        .cart-count {
+            background: var(--tan);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -94,6 +110,7 @@
             flex-direction: column;
             align-items: center;
             transition: var(--transition);
+            position: relative;
         }
 
         nav i {
@@ -204,6 +221,7 @@
             box-shadow: var(--card-shadow);
             transition: var(--transition);
             border: 1px solid rgba(0,0,0,0.1);
+            position: relative;
         }
 
         .product-card:hover {
@@ -249,6 +267,25 @@
         .badge-restricted {
             background-color: var(--danger);
             color: white;
+        }
+
+        .quick-view-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .quick-view-btn {
+            opacity: 1;
         }
 
         .product-content {
@@ -301,6 +338,270 @@
 
         .order-btn:hover {
             background: var(--olive-light);
+        }
+
+        /* Quick View Modal */
+        .quick-view-modal {
+            display: none;
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 900px;
+            border: 3px solid var(--olive);
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--olive);
+        }
+
+        .modal-product-view {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .modal-product-images {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1rem;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: var(--transition);
+        }
+
+        .thumbnail:hover {
+            border-color: var(--olive);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background: #f5f5f5;
+        }
+
+        .modal-product-details {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+        }
+
+        .modal-product-info h2 {
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--olive-dark);
+        }
+
+        .modal-product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--olive);
+            margin: 1rem 0;
+        }
+
+        .modal-product-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .product-specs {
+            margin-bottom: 2rem;
+        }
+
+        .spec-item {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-label {
+            font-weight: bold;
+            width: 120px;
+            color: var(--olive-dark);
+        }
+
+        .size-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .size-option:hover {
+            border-color: var(--olive);
+        }
+
+        .size-option.selected {
+            background: var(--olive);
+            color: white;
+            border-color: var(--olive);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: #f0f0f0;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 0 0.5rem;
+        }
+
+        .modal-action-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .modal-add-to-cart {
+            background: var(--olive);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+        }
+
+        .modal-add-to-cart:hover {
+            background: var(--olive-light);
+        }
+
+        .modal-wishlist {
+            background: white;
+            color: var(--dark-gray);
+            border: 1px solid #ddd;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-wishlist:hover {
+            border-color: var(--olive);
+            color: var(--olive);
+        }
+
+        /* Filter System */
+        .filter-system {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .filter-title {
+            font-family: 'Stardos Stencil', cursive;
+            font-size: 1.2rem;
+            color: var(--olive-dark);
+        }
+
+        .clear-filters {
+            color: var(--olive);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-group-title {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--olive-dark);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-option {
+            padding: 0.3rem 0.8rem;
+            background: #f5f5f5;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-option:hover {
+            background: #e0e0e0;
+        }
+
+        .filter-option.selected {
+            background: var(--olive);
+            color: white;
         }
 
         /* Footer */
@@ -375,6 +676,8 @@
             opacity: 0;
             transition: opacity 0.3s;
             pointer-events: none;
+            max-width: 90%;
+            text-align: center;
         }
 
         .toast.show {
@@ -382,6 +685,20 @@
         }
 
         /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .modal-product-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-product-images {
+                grid-template-columns: 80px 1fr;
+            }
+            
+            .main-image {
+                height: 300px;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 1rem;
@@ -401,6 +718,26 @@
 
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            .modal-product-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .thumbnail-container {
+                flex-direction: row;
+                order: 2;
+                margin-top: 1rem;
+            }
+            
+            .thumbnail {
+                height: 60px;
+                width: 60px;
             }
         }
 
@@ -425,6 +762,10 @@
             .product-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .modal-action-btns {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -436,6 +777,10 @@
             <div class="header-text">
                 <h1>SECRET SQUIRREL MISSION</h1>
             </div>
+        </div>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
         </div>
     </header>
 
@@ -452,18 +797,55 @@
 
     <!-- Main Content -->
     <main>
+        <!-- Filter System -->
+        <div class="filter-system">
+            <div class="filter-header">
+                <div class="filter-title">FILTER EQUIPMENT</div>
+                <div class="clear-filters">Clear All</div>
+            </div>
+            <div class="filter-options-container">
+                <div class="filter-group">
+                    <div class="filter-group-title">CATEGORY</div>
+                    <div class="filter-options">
+                        <div class="filter-option" data-filter="category" data-value="apparel">Apparel</div>
+                        <div class="filter-option" data-filter="category" data-value="vehicles">Vehicles</div>
+                        <div class="filter-option" data-filter="category" data-value="equipment">Equipment</div>
+                        <div class="filter-option" data-filter="category" data-value="heavy">Heavy Gear</div>
+                        <div class="filter-option" data-filter="category" data-value="k9">K9 Gear</div>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-group-title">PRICE RANGE</div>
+                    <div class="filter-options">
+                        <div class="filter-option" data-filter="price" data-value="0-100">Under $100</div>
+                        <div class="filter-option" data-filter="price" data-value="100-200">$100 - $200</div>
+                        <div class="filter-option" data-filter="price" data-value="200-500">$200 - $500</div>
+                        <div class="filter-option" data-filter="price" data-value="500+">$500+</div>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-group-title">BRAND</div>
+                    <div class="filter-options">
+                        <div class="filter-option" data-filter="brand" data-value="australian">Australian Made</div>
+                        <div class="filter-option" data-filter="brand" data-value="international">International</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Military Apparel -->
         <div class="section-header" id="apparel">MILITARY APPAREL</div>
         <div class="product-grid">
             <!-- Tactical Shirt -->
-            <div class="product-card">
+            <div class="product-card" data-category="apparel" data-price="129.99" data-brand="australian">
                 <div class="product-image" style="background-image: url('https://www.helikon-tex.com/media/catalog/product/c/m/cm-shirt-tm-fg-main.jpg')"></div>
                 <div class="product-badges">
                     <div class="badge badge-australia">AUSTRALIAN MADE</div>
                 </div>
+                <div class="quick-view-btn" data-product-id="product1">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">TACTICAL COMBAT SHIRT</h3>
-                    <p class="product-description">MultiCam pattern with reinforced elbows and mission insignia</p>
+                    <p class="product-description">MultiCam pattern with reinforced elbows and mission insignia. Made from durable 65% polyester / 35% cotton ripstop fabric with moisture-wicking properties.</p>
                     <div class="product-meta">
                         <span class="product-price">$129.99</span>
                         <span class="product-rating">
@@ -477,11 +859,12 @@
             </div>
 
             <!-- Combat Pants -->
-            <div class="product-card">
+            <div class="product-card" data-category="apparel" data-price="119.99" data-brand="international">
                 <div class="product-image" style="background-image: url('https://www.helikon-tex.com/media/catalog/product/c/m/cm-pants-tm-odg-main.jpg')"></div>
+                <div class="quick-view-btn" data-product-id="product2">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">SPEC OPS COMBAT PANTS</h3>
-                    <p class="product-description">Ripstop fabric with knee pad inserts and cargo pockets</p>
+                    <p class="product-description">Ripstop fabric with knee pad inserts and cargo pockets. Features articulated knees, reinforced stitching, and multiple storage compartments.</p>
                     <div class="product-meta">
                         <span class="product-price">$119.99</span>
                         <span class="product-rating">
@@ -495,14 +878,15 @@
             </div>
 
             <!-- Tactical Vest -->
-            <div class="product-card">
+            <div class="product-card" data-category="apparel" data-price="279.99" data-brand="international">
                 <div class="product-image" style="background-image: url('https://www.viperta.com/wp-content/uploads/2021/05/VT-PC-01-Plate-Carrier-Vest-Multicam-1.jpg')"></div>
                 <div class="product-badges">
                     <div class="badge badge-new">NEW</div>
                 </div>
+                <div class="quick-view-btn" data-product-id="product3">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">MODULAR PLATE CARRIER</h3>
-                    <p class="product-description">MOLLE compatible tactical vest with mission insignia</p>
+                    <p class="product-description">MOLLE compatible tactical vest with mission insignia. Adjustable cummerbund and shoulder straps for perfect fit. Compatible with Level III/IV plates.</p>
                     <div class="product-meta">
                         <span class="product-price">$279.99</span>
                         <span class="product-rating">
@@ -516,11 +900,12 @@
             </div>
 
             <!-- Tactical Boots -->
-            <div class="product-card">
+            <div class="product-card" data-category="apparel" data-price="179.99" data-brand="australian">
                 <div class="product-image" style="background-image: url('https://www.tacticalboots.com.au/cdn/shop/products/511-Tactical-ATAC-8-Side-Zip-Boots-Black-1.jpg')"></div>
+                <div class="quick-view-btn" data-product-id="product4">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">TACTICAL ASSAULT BOOTS</h3>
-                    <p class="product-description">8" side-zip boots with ankle support and non-slip soles</p>
+                    <p class="product-description">8" side-zip boots with ankle support and non-slip soles. Features waterproof membrane, shock-absorbing midsoles, and abrasion-resistant toe caps.</p>
                     <div class="product-meta">
                         <span class="product-price">$179.99</span>
                         <span class="product-rating">
@@ -538,11 +923,12 @@
         <div class="section-header" id="vehicles">VEHICLE SYSTEMS</div>
         <div class="product-grid">
             <!-- Humvee Wrap -->
-            <div class="product-card">
+            <div class="product-card" data-category="vehicles" data-price="3299" data-brand="international">
                 <div class="product-image" style="background-image: url('https://www.military-today.com/army/m998_humvee_camo.jpg')"></div>
+                <div class="quick-view-btn" data-product-id="product5">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">HMMWV CAMOUFLAGE WRAP</h3>
-                    <p class="product-description">Full vehicle wrap with mission insignia and tactical pattern</p>
+                    <p class="product-description">Full vehicle wrap with mission insignia and tactical pattern. High-durability vinyl with matte finish, resistant to UV, fuel, and abrasion.</p>
                     <div class="product-meta">
                         <span class="product-price">$3,299.00</span>
                         <span class="product-rating">
@@ -556,14 +942,15 @@
             </div>
 
             <!-- Tactical Truck Decals -->
-            <div class="product-card">
+            <div class="product-card" data-category="vehicles" data-price="599" data-brand="australian">
                 <div class="product-image" style="background-image: url('https://www.army.mod.uk/media/15314/cttroop.jpg')"></div>
                 <div class="product-badges">
                     <div class="badge badge-australia">AUSTRALIAN MADE</div>
                 </div>
+                <div class="quick-view-btn" data-product-id="product6">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">TACTICAL TRUCK DECALS</h3>
-                    <p class="product-description">High-visibility door and hood markings with mission emblem</p>
+                    <p class="product-description">High-visibility door and hood markings with mission emblem. Made from 7-year outdoor vinyl with air-release technology for bubble-free application.</p>
                     <div class="product-meta">
                         <span class="product-price">$599.00</span>
                         <span class="product-rating">
@@ -581,11 +968,12 @@
         <div class="section-header" id="equipment">FIELD EQUIPMENT</div>
         <div class="product-grid">
             <!-- Tactical Backpack -->
-            <div class="product-card">
+            <div class="product-card" data-category="equipment" data-price="189.99" data-brand="international">
                 <div class="product-image" style="background-image: url('https://www.511tactical.com/media/catalog/product/cache/1/image/1200x/040ec09b1e35df139433887a97daa66f/5/9/59201_01.jpg')"></div>
+                <div class="quick-view-btn" data-product-id="product7">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">72-HOUR ASSAULT PACK</h3>
-                    <p class="product-description">Hydration compatible backpack with mission patch</p>
+                    <p class="product-description">Hydration compatible backpack with mission patch. 35L capacity with multiple compartments, MOLLE webbing, and waterproof zippers.</p>
                     <div class="product-meta">
                         <span class="product-price">$189.99</span>
                         <span class="product-rating">
@@ -599,14 +987,15 @@
             </div>
 
             <!-- Field Mess Kit -->
-            <div class="product-card">
+            <div class="product-card" data-category="equipment" data-price="69.99" data-brand="australian">
                 <div class="product-image" style="background-image: url('https://www.surplus.com/media/catalog/product/cache/6f9e0726b8f8e8d6a3e0f3d6a8e1b4a5/1/2/1260-01.jpg')"></div>
                 <div class="product-badges">
                     <div class="badge badge-australia">AUSTRALIAN MADE</div>
                 </div>
+                <div class="quick-view-btn" data-product-id="product8">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">FIELD MESS KIT</h3>
-                    <p class="product-description">Stainless steel eating set with mission engraving</p>
+                    <p class="product-description">Stainless steel eating set with mission engraving. Includes plate, bowl, cup, and utensils. Nestable design with carrying pouch.</p>
                     <div class="product-meta">
                         <span class="product-price">$69.99</span>
                         <span class="product-rating">
@@ -624,14 +1013,15 @@
         <div class="section-header" id="munitions">MUNITIONS</div>
         <div class="product-grid">
             <!-- Ammo Crate -->
-            <div class="product-card">
+            <div class="product-card" data-category="heavy" data-price="129.99" data-brand="international">
                 <div class="product-image" style="background-image: url('https://www.armysurpluswarehouse.com/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/a/m/ammo-can-30-cal-1.jpg')"></div>
                 <div class="product-badges">
                     <div class="badge badge-restricted">ID REQUIRED</div>
                 </div>
+                <div class="quick-view-btn" data-product-id="product9">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">AMMUNITION CRATE</h3>
-                    <p class="product-description">Sealed container with mission stenciling</p>
+                    <p class="product-description">Sealed container with mission stenciling. Waterproof and dustproof with pressure relief valve. Holds up to 400 rounds of 5.56mm ammunition.</p>
                     <div class="product-meta">
                         <span class="product-price">$129.99</span>
                         <span class="product-rating">
@@ -649,14 +1039,16 @@
         <div class="section-header" id="heavy">HEAVY EQUIPMENT</div>
         <div class="product-grid">
             <!-- Ballistic Armor -->
-            <div class="product-card">
+            <div class="product-card" data-category="heavy" data-price="1299" data-brand="international">
                 <div class="product-image" style="background-image: url('https://www.military.com/sites/default/files/styles/full_breakpoints_theme_mlt_2x/public/2021-03/body-armor-1600.jpg')"></div>
                 <div class="product-badges">
                     <div class="badge badge-new">NEW</div>
+                    <div class="badge badge-restricted">ID REQUIRED</div>
                 </div>
+                <div class="quick-view-btn" data-product-id="product10">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">BALLISTIC ARMOR SET</h3>
-                    <p class="product-description">Level IV plates with mission insignia</p>
+                    <p class="product-description">Level IV plates with mission insignia. Multi-hit capable against 7.62mm AP rounds. Lightweight ceramic composite with trauma pad backing.</p>
                     <div class="product-meta">
                         <span class="product-price">$1,299.00</span>
                         <span class="product-rating">
@@ -674,14 +1066,15 @@
         <div class="section-header" id="pets">K9 OPERATIVE GEAR</div>
         <div class="product-grid">
             <!-- Dog Vest -->
-            <div class="product-card">
+            <div class="product-card" data-category="k9" data-price="149.99" data-brand="australian">
                 <div class="product-image" style="background-image: url('https://www.rayallen.com/cdn/shop/products/RAM2020-K9-Vest-MC-1_1200x1200.jpg')"></div>
                 <div class="product-badges">
                     <div class="badge badge-australia">AUSTRALIAN MADE</div>
                 </div>
+                <div class="quick-view-btn" data-product-id="product11">QUICK VIEW</div>
                 <div class="product-content">
                     <h3 class="product-title">K9 TACTICAL VEST</h3>
-                    <p class="product-description">Mission-branded protective vest for working dogs</p>
+                    <p class="product-description">Mission-branded protective vest for working dogs. Adjustable straps, MOLLE compatible, with handle and identification panel. Fits chest 24-36".</p>
                     <div class="product-meta">
                         <span class="product-price">$149.99</span>
                         <span class="product-rating">
@@ -705,6 +1098,7 @@
                     <li><a href="#"><i class="fas fa-phone-alt"></i> Contact HQ</a></li>
                     <li><a href="#"><i class="fas fa-truck"></i> Shipping</a></li>
                     <li><a href="#"><i class="fas fa-exchange-alt"></i> Returns</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
                 </ul>
             </div>
 
@@ -712,6 +1106,7 @@
                 <h3>ABOUT</h3>
                 <ul>
                     <li><a href="#"><i class="fas fa-history"></i> Our Story</a></li>
+                    <li><a href="#"><i class="fas fa-award"></i> Quality Standards</a></li>
                     <li><a href="#"><i class="fas fa-lock"></i> Privacy</a></li>
                     <li><a href="#"><i class="fas fa-file-contract"></i> Terms</a></li>
                 </ul>
@@ -723,15 +1118,26 @@
                     <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
                     <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
                     <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>OPERATIONS</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-id-card"></i> Careers</a></li>
+                    <li><a href="#"><i class="fas fa-handshake"></i> Partnerships</a></li>
+                    <li><a href="#"><i class="fas fa-building"></i> Wholesale</a></li>
+                    <li><a href="#"><i class="fas fa-shield-alt"></i> Military Discount</a></li>
                 </ul>
             </div>
 
             <div class="security-notice">
-                <p><i class="fas fa-shield-alt"></i> All munitions and equipment comply with Australian defense standards and export regulations.</p>
+                <p><i class="fas fa-shield-alt"></i> All munitions and equipment comply with Australian defense standards and export regulations. Purchases of restricted items require valid identification and may be subject to additional verification.</p>
             </div>
 
             <div class="copyright">
-                <p>© 2024 SECRET SQUIRREL MISSION. ALL RIGHTS RESERVED.</p>
+                <p>© 2024 SECRET SQUIRREL MISSION. ALL RIGHTS RESERVED. | ABN 12 345 678 910</p>
             </div>
         </div>
     </footer>
@@ -745,6 +1151,16 @@
         <a href="#" id="cartBtn"><i class="fas fa-shopping-cart"></i> Cart</a>
     </nav>
 
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-product-view" id="modalProductView">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
@@ -752,6 +1168,208 @@
         // Shopping Cart
         let cart = [];
         let cartCount = 0;
+
+        // Product Database
+        const products = {
+            'product1': {
+                name: 'TACTICAL COMBAT SHIRT',
+                price: 129.99,
+                description: 'MultiCam pattern tactical shirt with reinforced elbows and mission insignia. Made from durable 65% polyester / 35% cotton ripstop fabric with moisture-wicking properties. Features include:',
+                specs: [
+                    {label: 'Material', value: '65% Polyester / 35% Cotton Ripstop'},
+                    {label: 'Sizes', value: 'XS-XXL'},
+                    {label: 'Colors', value: 'MultiCam, Black, Olive Drab'},
+                    {label: 'Features', value: 'Reinforced elbows, moisture-wicking, IR reduction'},
+                    {label: 'Weight', value: '450g'}
+                ],
+                images: [
+                    'https://www.helikon-tex.com/media/catalog/product/c/m/cm-shirt-tm-fg-main.jpg',
+                    'https://www.helikon-tex.com/media/catalog/product/c/m/cm-shirt-tm-fg-back.jpg',
+                    'https://www.helikon-tex.com/media/catalog/product/c/m/cm-shirt-tm-fg-detail.jpg'
+                ],
+                rating: 4.5
+            },
+            'product2': {
+                name: 'SPEC OPS COMBAT PANTS',
+                price: 119.99,
+                description: 'Ripstop fabric combat pants with knee pad inserts and cargo pockets. Features articulated knees, reinforced stitching, and multiple storage compartments. Ideal for field operations with:',
+                specs: [
+                    {label: 'Material', value: '50/50 NYCO Ripstop'},
+                    {label: 'Sizes', value: '28-42 Waist'},
+                    {label: 'Colors', value: 'MultiCam, Coyote Brown, Ranger Green'},
+                    {label: 'Features', value: 'Knee pad pockets, 8 pockets total, reinforced seat'},
+                    {label: 'Weight', value: '650g'}
+                ],
+                images: [
+                    'https://www.helikon-tex.com/media/catalog/product/c/m/cm-pants-tm-odg-main.jpg',
+                    'https://www.helikon-tex.com/media/catalog/product/c/m/cm-pants-tm-odg-back.jpg',
+                    'https://www.helikon-tex.com/media/catalog/product/c/m/cm-pants-tm-odg-detail.jpg'
+                ],
+                rating: 4
+            },
+            'product3': {
+                name: 'MODULAR PLATE CARRIER',
+                price: 279.99,
+                description: 'MOLLE compatible tactical vest with mission insignia. Adjustable cummerbund and shoulder straps for perfect fit. Compatible with Level III/IV plates. System features:',
+                specs: [
+                    {label: 'Material', value: '500D Cordura Nylon'},
+                    {label: 'Sizes', value: 'S-XL (Adjustable)'},
+                    {label: 'Colors', value: 'MultiCam, Black, Coyote'},
+                    {label: 'Features', value: 'MOLLE webbing, drag handle, removable panels'},
+                    {label: 'Plate Size', value: '10x12" (SAPI compatible)'}
+                ],
+                images: [
+                    'https://www.viperta.com/wp-content/uploads/2021/05/VT-PC-01-Plate-Carrier-Vest-Multicam-1.jpg',
+                    'https://www.viperta.com/wp-content/uploads/2021/05/VT-PC-01-Plate-Carrier-Vest-Multicam-3.jpg',
+                    'https://www.viperta.com/wp-content/uploads/2021/05/VT-PC-01-Plate-Carrier-Vest-Multicam-2.jpg'
+                ],
+                rating: 5
+            },
+            'product4': {
+                name: 'TACTICAL ASSAULT BOOTS',
+                price: 179.99,
+                description: '8" side-zip tactical boots with ankle support and non-slip soles. Features waterproof membrane, shock-absorbing midsoles, and abrasion-resistant toe caps. Boot specifications:',
+                specs: [
+                    {label: 'Material', value: 'Full-grain leather & 1000D Cordura'},
+                    {label: 'Sizes', value: 'US 6-14 (Half sizes available)'},
+                    {label: 'Colors', value: 'Black, Coyote Brown'},
+                    {label: 'Features', value: 'Waterproof, side zip, non-marking sole'},
+                    {label: 'Weight', value: '1.2kg per pair'}
+                ],
+                images: [
+                    'https://www.tacticalboots.com.au/cdn/shop/products/511-Tactical-ATAC-8-Side-Zip-Boots-Black-1.jpg',
+                    'https://www.tacticalboots.com.au/cdn/shop/products/511-Tactical-ATAC-8-Side-Zip-Boots-Black-2.jpg',
+                    'https://www.tacticalboots.com.au/cdn/shop/products/511-Tactical-ATAC-8-Side-Zip-Boots-Black-3.jpg'
+                ],
+                rating: 4.2
+            },
+            'product5': {
+                name: 'HMMWV CAMOUFLAGE WRAP',
+                price: 3299,
+                description: 'Full vehicle wrap with mission insignia and tactical pattern. High-durability vinyl with matte finish, resistant to UV, fuel, and abrasion. Wrap specifications:',
+                specs: [
+                    {label: 'Material', value: '3M 1080 Series Vinyl'},
+                    {label: 'Fit', value: 'HMMWV (All variants)'},
+                    {label: 'Patterns', value: 'MultiCam, Desert Camo, Urban Grey'},
+                    {label: 'Features', value: 'Fuel resistant, UV protection, matte finish'},
+                    {label: 'Warranty', value: '5 years outdoor durability'}
+                ],
+                images: [
+                    'https://www.military-today.com/army/m998_humvee_camo.jpg',
+                    'https://www.military-today.com/army/m998_humvee_camo_2.jpg',
+                    'https://www.military-today.com/army/m998_humvee_camo_3.jpg'
+                ],
+                rating: 4.7
+            },
+            'product6': {
+                name: 'TACTICAL TRUCK DECALS',
+                price: 599,
+                description: 'High-visibility door and hood markings with mission emblem. Made from 7-year outdoor vinyl with air-release technology for bubble-free application. Decal features:',
+                specs: [
+                    {label: 'Material', value: 'Oracal 751 Series Vinyl'},
+                    {label: 'Fit', value: 'Universal (Custom sizes available)'},
+                    {label: 'Colors', value: 'Customizable'},
+                    {label: 'Features', value: 'Air-release, UV resistant, removable'},
+                    {label: 'Warranty', value: '7 years outdoor durability'}
+                ],
+                images: [
+                    'https://www.army.mod.uk/media/15314/cttroop.jpg',
+                    'https://www.army.mod.uk/media/15315/cttroop2.jpg',
+                    'https://www.army.mod.uk/media/15316/cttroop3.jpg'
+                ],
+                rating: 4
+            },
+            'product7': {
+                name: '72-HOUR ASSAULT PACK',
+                price: 189.99,
+                description: 'Hydration compatible backpack with mission patch. 35L capacity with multiple compartments, MOLLE webbing, and waterproof zippers. Pack features:',
+                specs: [
+                    {label: 'Material', value: '500D Cordura Nylon'},
+                    {label: 'Capacity', value: '35 Liters'},
+                    {label: 'Colors', value: 'MultiCam, Black, Ranger Green'},
+                    {label: 'Features', value: 'Hydration compatible, MOLLE webbing, rain cover'},
+                    {label: 'Weight', value: '1.1kg empty'}
+                ],
+                images: [
+                    'https://www.511tactical.com/media/catalog/product/cache/1/image/1200x/040ec09b1e35df139433887a97daa66f/5/9/59201_01.jpg',
+                    'https://www.511tactical.com/media/catalog/product/cache/1/image/1200x/040ec09b1e35df139433887a97daa66f/5/9/59201_02.jpg',
+                    'https://www.511tactical.com/media/catalog/product/cache/1/image/1200x/040ec09b1e35df139433887a97daa66f/5/9/59201_03.jpg'
+                ],
+                rating: 4.8
+            },
+            'product8': {
+                name: 'FIELD MESS KIT',
+                price: 69.99,
+                description: 'Stainless steel eating set with mission engraving. Includes plate, bowl, cup, and utensils. Nestable design with carrying pouch. Kit contents:',
+                specs: [
+                    {label: 'Material', value: '304 Stainless Steel'},
+                    {label: 'Contents', value: 'Plate, bowl, cup, spork, knife, pouch'},
+                    {label: 'Capacity', value: 'Plate: 9", Bowl: 24oz, Cup: 16oz'},
+                    {label: 'Features', value: 'Dishwasher safe, nestable design'},
+                    {label: 'Weight', value: '1.3kg complete'}
+                ],
+                images: [
+                    'https://www.surplus.com/media/catalog/product/cache/6f9e0726b8f8e8d6a3e0f3d6a8e1b4a5/1/2/1260-01.jpg',
+                    'https://www.surplus.com/media/catalog/product/cache/6f9e0726b8f8e8d6a3e0f3d6a8e1b4a5/1/2/1260-02.jpg',
+                    'https://www.surplus.com/media/catalog/product/cache/6f9e0726b8f8e8d6a3e0f3d6a8e1b4a5/1/2/1260-03.jpg'
+                ],
+                rating: 5
+            },
+            'product9': {
+                name: 'AMMUNITION CRATE',
+                price: 129.99,
+                description: 'Sealed container with mission stenciling. Waterproof and dustproof with pressure relief valve. Holds up to 400 rounds of 5.56mm ammunition. Crate specifications:',
+                specs: [
+                    {label: 'Material', value: 'High-impact polymer'},
+                    {label: 'Capacity', value: '400 rounds 5.56mm or 200 rounds 7.62mm'},
+                    {label: 'Dimensions', value: '12" x 8" x 6"'},
+                    {label: 'Features', value: 'Waterproof, stackable, pressure relief'},
+                    {label: 'Weight', value: '1.8kg empty'}
+                ],
+                images: [
+                    'https://www.armysurpluswarehouse.com/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/a/m/ammo-can-30-cal-1.jpg',
+                    'https://www.armysurpluswarehouse.com/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/a/m/ammo-can-30-cal-2.jpg',
+                    'https://www.armysurpluswarehouse.com/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/a/m/ammo-can-30-cal-3.jpg'
+                ],
+                rating: 3.5
+            },
+            'product10': {
+                name: 'BALLISTIC ARMOR SET',
+                price: 1299,
+                description: 'Level IV plates with mission insignia. Multi-hit capable against 7.62mm AP rounds. Lightweight ceramic composite with trauma pad backing. Armor specifications:',
+                specs: [
+                    {label: 'Material', value: 'Ceramic composite with polyethylene backing'},
+                    {label: 'Rating', value: 'NIJ Level IV'},
+                    {label: 'Sizes', value: '10"x12" (SAPI cut available)'},
+                    {label: 'Features', value: 'Multi-hit capable, spall coating'},
+                    {label: 'Weight', value: '3.2kg per plate'}
+                ],
+                images: [
+                    'https://www.military.com/sites/default/files/styles/full_breakpoints_theme_mlt_2x/public/2021-03/body-armor-1600.jpg',
+                    'https://www.military.com/sites/default/files/styles/full_breakpoints_theme_mlt_2x/public/2021-03/body-armor-2-1600.jpg',
+                    'https://www.military.com/sites/default/files/styles/full_breakpoints_theme_mlt_2x/public/2021-03/body-armor-3-1600.jpg'
+                ],
+                rating: 4.7
+            },
+            'product11': {
+                name: 'K9 TACTICAL VEST',
+                price: 149.99,
+                description: 'Mission-branded protective vest for working dogs. Adjustable straps, MOLLE compatible, with handle and identification panel. Fits chest 24-36". Vest features:',
+                specs: [
+                    {label: 'Material', value: '500D Cordura with foam padding'},
+                    {label: 'Sizes', value: 'Small (24-30"), Medium (30-36")'},
+                    {label: 'Colors', value: 'MultiCam, Black, Coyote'},
+                    {label: 'Features', value: 'MOLLE compatible, drag handle, ID panel'},
+                    {label: 'Weight', value: '900g'}
+                ],
+                images: [
+                    'https://www.rayallen.com/cdn/shop/products/RAM2020-K9-Vest-MC-1_1200x1200.jpg',
+                    'https://www.rayallen.com/cdn/shop/products/RAM2020-K9-Vest-MC-2_1200x1200.jpg',
+                    'https://www.rayallen.com/cdn/shop/products/RAM2020-K9-Vest-MC-3_1200x1200.jpg'
+                ],
+                rating: 4
+            }
+        };
 
         // Add to Cart Function
         function addToCart(name, price) {
@@ -763,8 +1381,8 @@
 
         // Update Cart Count in Navigation
         function updateCartCount() {
-            const cartBtn = document.getElementById('cartBtn');
-            cartBtn.innerHTML = `<i class="fas fa-shopping-cart"></i> Cart (${cartCount})`;
+            const cartCountEl = document.querySelector('.cart-count');
+            cartCountEl.textContent = cartCount;
         }
 
         // Show Toast Notification
@@ -776,6 +1394,230 @@
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
+        }
+
+        // Quick View Modal
+        const modal = document.getElementById('quickViewModal');
+        const modalContent = document.getElementById('modalProductView');
+
+        document.querySelectorAll('.quick-view-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                showProductModal(productId);
+            });
+        });
+
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        function showProductModal(productId) {
+            const product = products[productId];
+            
+            let imagesHTML = '';
+            if (product.images && product.images.length > 0) {
+                imagesHTML += `
+                    <div class="modal-product-images">
+                        <div class="thumbnail-container">
+                            ${product.images.map((img, index) => `
+                                <img src="${img}" class="thumbnail ${index === 0 ? 'active' : ''}" 
+                                     onclick="changeMainImage('${img}', this)">
+                            `).join('')}
+                        </div>
+                        <img src="${product.images[0]}" class="main-image" id="mainProductImage">
+                    </div>
+                `;
+            }
+            
+            let specsHTML = '';
+            if (product.specs && product.specs.length > 0) {
+                specsHTML = `
+                    <div class="product-specs">
+                        <h3>SPECIFICATIONS</h3>
+                        ${product.specs.map(spec => `
+                            <div class="spec-item">
+                                <span class="spec-label">${spec.label}:</span>
+                                <span class="spec-value">${spec.value}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            modalContent.innerHTML = `
+                ${imagesHTML}
+                <div class="modal-product-details">
+                    <div class="modal-product-info">
+                        <h2>${product.name}</h2>
+                        <div class="modal-product-price">$${product.price.toFixed(2)}</div>
+                        <div class="modal-product-rating">
+                            ${renderRatingStars(product.rating)}
+                            <span>${product.rating.toFixed(1)} (24 reviews)</span>
+                        </div>
+                        <div class="modal-product-description">
+                            <p>${product.description}</p>
+                        </div>
+                        ${specsHTML}
+                    </div>
+                    <div class="modal-product-actions">
+                        <div class="size-selector">
+                            <div class="size-option selected">S</div>
+                            <div class="size-option">M</div>
+                            <div class="size-option">L</div>
+                            <div class="size-option">XL</div>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <div class="modal-action-btns">
+                            <button class="modal-add-to-cart" onclick="addToCart('${product.name}', ${product.price})">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="modal-wishlist">
+                                <i class="fas fa-heart"></i> Wishlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners for size selection
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.size-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                });
+            });
+            
+            // Add event listeners for quantity buttons
+            document.querySelector('.quantity-btn.minus').addEventListener('click', function() {
+                const input = document.querySelector('.quantity-input');
+                if (parseInt(input.value) > 1) {
+                    input.value = parseInt(input.value) - 1;
+                }
+            });
+            
+            document.querySelector('.quantity-btn.plus').addEventListener('click', function() {
+                const input = document.querySelector('.quantity-input');
+                input.value = parseInt(input.value) + 1;
+            });
+            
+            modal.style.display = 'block';
+        }
+
+        function changeMainImage(src, element) {
+            document.getElementById('mainProductImage').src = src;
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        function renderRatingStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Filter System
+        document.querySelectorAll('.filter-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const filterType = this.getAttribute('data-filter');
+                const filterValue = this.getAttribute('data-value');
+                
+                this.classList.toggle('selected');
+                filterProducts();
+            });
+        });
+
+        document.querySelector('.clear-filters').addEventListener('click', function() {
+            document.querySelectorAll('.filter-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            filterProducts();
+        });
+
+        function filterProducts() {
+            const selectedFilters = {
+                category: [],
+                price: [],
+                brand: []
+            };
+            
+            // Get all selected filters
+            document.querySelectorAll('.filter-option.selected').forEach(option => {
+                const type = option.getAttribute('data-filter');
+                const value = option.getAttribute('data-value');
+                selectedFilters[type].push(value);
+            });
+            
+            // Show all products if no filters are selected
+            if (selectedFilters.category.length === 0 && 
+                selectedFilters.price.length === 0 && 
+                selectedFilters.brand.length === 0) {
+                document.querySelectorAll('.product-card').forEach(card => {
+                    card.style.display = 'block';
+                });
+                return;
+            }
+            
+            // Filter products
+            document.querySelectorAll('.product-card').forEach(card => {
+                const category = card.getAttribute('data-category');
+                const price = parseFloat(card.getAttribute('data-price'));
+                const brand = card.getAttribute('data-brand');
+                
+                let matchesCategory = selectedFilters.category.length === 0 || 
+                                    selectedFilters.category.includes(category);
+                
+                let matchesPrice = selectedFilters.price.length === 0;
+                if (!matchesPrice) {
+                    for (const range of selectedFilters.price) {
+                        const [min, max] = range.split('-').map(Number);
+                        if (max && price >= min && price <= max) {
+                            matchesPrice = true;
+                            break;
+                        } else if (!max && price >= min) {
+                            matchesPrice = true;
+                            break;
+                        }
+                    }
+                }
+                
+                let matchesBrand = selectedFilters.brand.length === 0 || 
+                                 selectedFilters.brand.includes(brand);
+                
+                if (matchesCategory && matchesPrice && matchesBrand) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
         // Explore Button
